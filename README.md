@@ -48,7 +48,7 @@ Return a dictionary of add-ons which match a specific genre.
 
 ------------------------------------------------------------------------------------------
 
-##ADD-ON ID FROM PATH:
+###### ADD-ON ID FROM PATH:
 If you know the folder name of an add-on but want to find out the
 addon id (it may not necessarily be the same as folder name) then
 you can use this function. Even if the add-on isn't enabled on the
@@ -68,7 +68,7 @@ system this will regex out the add-on id.
 
 ------------------------------------------------------------------------------------------
 
-##ADD-ON INFO:
+###### ADD-ON INFO:
 Retrieve details about an add-on, lots of built-in values are available
 such as path, version, name etc.
 
@@ -93,7 +93,7 @@ such as path, version, name etc.
 
 ------------------------------------------------------------------------------------------
 
-##ADDON LISTS:
+###### ADDON LISTS:
 Return a list of enabled or disabled add-ons found in the database.
 
 	CODE: Addon_List([enabled, inc_new])
@@ -124,7 +124,7 @@ Return a list of enabled or disabled add-ons found in the database.
 
 ------------------------------------------------------------------------------------------
 
-##ADDON SERVICE
+###### ADDON SERVICE
 Send through an add-on id, list of id's or leave as the default which is "all". This
 will loop through the list of add-ons and return the ones which are run as services.
 
@@ -166,7 +166,7 @@ which are run as services then trying to enable them can cause Kodi to freeze.
 
 ------------------------------------------------------------------------------------------
 
-##ADDON SETTINGS - RETRIEVE/SET VALUE:
+###### ADDON SETTINGS - RETRIEVE/SET VALUE:
 Change or retrieve an add-on setting.
 
 	CODE: Addon_Setting(setting, [value, addon_id])
@@ -194,7 +194,7 @@ Change or retrieve an add-on setting.
 
 ------------------------------------------------------------------------------------------
 
-##ADDON SETTINGS - OPEN:
+###### ADDON SETTINGS - OPEN:
 By default this will open the current add-on settings but if you pass through an addon_id it will open the settings for that add-on.
 
 	CODE: Open_Settings([addon_id, focus, click, stop_script])
@@ -227,7 +227,7 @@ By default this will open the current add-on settings but if you pass through an
 
 ------------------------------------------------------------------------------------------
 
-##ADDON TOGGLE:
+###### ADDON TOGGLE:
 Send through either a list of add-on ids or one single add-on id.
 The add-ons sent through will then be added to the addons*.db
 and enabled or disabled (depending on state sent through).
@@ -287,7 +287,7 @@ DO NOT set safe_mode to False unless you 100% understand the consequences!
 
 ------------------------------------------------------------------------------------------
 
-##ADULT TOGGLE:
+###### ADULT TOGGLE:
 Remove/Enable a list of add-ons, these are put into a containment area until enabled again.
 
 CODE: Adult_Toggle(adult_list, [disable, update_status])
@@ -308,7 +308,7 @@ AVAILABLE PARAMS:
 
 ------------------------------------------------------------------------------------------
 
-##CALLER(S) OF FUNCTION:
+###### CALLER(S) OF FUNCTION:
 Return the add-on id or path of the script which originally called
 your function. If it's been called through a number of add-ons/scripts
 you can grab a list of paths that have been called.
@@ -350,7 +350,7 @@ you can grab a list of paths that have been called.
 
 ------------------------------------------------------------------------------------------
 
-##CHECK REPO AVAILABILITY STATUS:
+###### CHECK REPO AVAILABILITY STATUS:
 This will check the status of repo and return True if the repo is online or False
 if it contains paths that are no longer accessible online.
 
@@ -384,7 +384,7 @@ will return the correct results.
 
 ------------------------------------------------------------------------------------------
 
-##DEFAULT SETTING:
+###### DEFAULT SETTING:
 This will return the DEFAULT value for a setting (as set in resources/settings.xml)
 and optionally reset the current value back to this default. If you pass through
 the setting as blank it will return a dictionary of all default settings.
@@ -412,7 +412,7 @@ the setting as blank it will return a dictionary of all default settings.
 
 ------------------------------------------------------------------------------------------
 
-##DELETE COOKIES:
+###### DELETE COOKIES:
 This will delete your cookies file.
 
 	CODE: Delete_Cookies([filename])
@@ -431,7 +431,7 @@ This will delete your cookies file.
 
 ------------------------------------------------------------------------------------------
 
-##DEPENDENCY CHECK:
+###### DEPENDENCY CHECK:
 This will return a list of all dependencies required by an add-on.
 This information is grabbed directly from the currently installed addon.xml,
 an individual add-on id or a list of add-on id's.
@@ -459,7 +459,7 @@ an individual add-on id or a list of add-on id's.
 
 ------------------------------------------------------------------------------------------
 
-##INSTALLED ADD-ON DETAILS:
+###### INSTALLED ADD-ON DETAILS:
 This will send back a list of currently installed add-ons on the system.
 All the three paramaters you can send through to this function are optional,
 by default (without any params) this function will return a dictionary of all
@@ -498,7 +498,7 @@ installed add-ons. The dictionary will contain "addonid" and "type" e.g. 'xbmc.p
 
 ------------------------------------------------------------------------------------------
 
-##SETTINGS - CREATE CUSTOM ADD-ON SETTINGS:
+###### SETTINGS - CREATE CUSTOM ADD-ON SETTINGS:
 All credit goes to OptimusGREEN for this module.
 
 This will create a new settings file for your add-on which you can read and write to. This is separate
@@ -528,7 +528,7 @@ call it something other than settings.xml as that is already used by Kodi add-on
 
 ------------------------------------------------------------------------------------------
 
-##TOGGLE ADD-ONS:
+###### TOGGLE ADD-ONS:
 Send through either a list of add-on ids or one single add-on id. The add-ons sent through will then be added
 to the addons*.db and enabled or disabled (depending on state sent through).
 
@@ -580,11 +580,11 @@ the consequences!
 
 ------------------------------------------------------------------------------------------
 
-#A N D R O I D   S P E C I F I C
+## A N D R O I D   S P E C I F I C
 
 ------------------------------------------------------------------------------------------
 
-##ANDROID APP SETTINGS:
+###### ANDROID APP SETTINGS:
 Open up the settings for an installed Android app.
 
 	CODE: App_Settings(apk_id)
@@ -601,7 +601,7 @@ Open up the settings for an installed Android app.
 
 ------------------------------------------------------------------------------------------
 
-##INSTALLED APPS:
+###### INSTALLED APPS:
 Return a list of apk id's installed on system
 
 	CODE: My_Apps()
@@ -615,7 +615,7 @@ Return a list of apk id's installed on system
 
 ------------------------------------------------------------------------------------------
 
-##START ANDROID APP:
+###### START ANDROID APP:
 Open an Android application
 
 	CODE: Start_App(apk_id)
@@ -631,7 +631,7 @@ Open an Android application
 
 ------------------------------------------------------------------------------------------
 
-##UNINSTALL ANDROID APP
+###### UNINSTALL ANDROID APP
 Uninstall and Android app
 
 	CODE: Uninstall_APK(apk_id)
@@ -643,11 +643,11 @@ Uninstall and Android app
 
 ------------------------------------------------------------------------------------------
 
-#D A T A B A S E S
+## D A T A B A S E S
 
 ------------------------------------------------------------------------------------------
 
-##A GENERIC QUERY:
+###### A GENERIC QUERY:
 Open a database and either return an array of results with the SELECT SQL command or perform an action such as INSERT, UPDATE, CREATE.
 
 	CODE:  DB_Query(db_path, query, [values])
@@ -675,7 +675,7 @@ Open a database and either return an array of results with the SELECT SQL comman
 	koding.Text_Box('DB SEARCH RESULTS',str(db_query))
 ------------------------------------------------------------------------------------------
 
-##ADD TO TABLE:
+###### ADD TO TABLE:
 Add a row to the table in /userdata/addon_data/<your_addon_id>/database.db
 
 	CODE:  Add_To_Table(table, spec)
@@ -706,7 +706,7 @@ Add a row to the table in /userdata/addon_data/<your_addon_id>/database.db
 
 ------------------------------------------------------------------------------------------
 
-##ADD MULTIPLE ROWS TO TABLE:
+###### ADD MULTIPLE ROWS TO TABLE:
 This will allow you to add multiple rows to a table in one big (fast) bulk command
 The db file is: /userdata/addon_data/<your_addon_id>/database.db
 
@@ -738,7 +738,7 @@ The db file is: /userdata/addon_data/<your_addon_id>/database.db
 
 ------------------------------------------------------------------------------------------
 
-##CREATE A NEW TABLE:
+###### CREATE A NEW TABLE:
 Create a new table in the database at /userdata/addon_data/<your_addon_id>/database.db
 
 	CODE:  Create_Table(table, spec)
@@ -769,7 +769,7 @@ Create a new table in the database at /userdata/addon_data/<your_addon_id>/datab
 
 ------------------------------------------------------------------------------------------
 
-##GET ALL RESULTS FROM A TABLE:
+###### GET ALL RESULTS FROM A TABLE:
 Return a list of all entries from a specific table in /userdata/addon_data/<your_addon_id>/database.db
 
 	CODE:  Get_All_From_Table(table)
@@ -795,7 +795,7 @@ Return a list of all entries from a specific table in /userdata/addon_data/<your
 
 ------------------------------------------------------------------------------------------
 
-##GET SPECIFIC RESULTS FROM A TABLE:
+###### GET SPECIFIC RESULTS FROM A TABLE:
 Return a list of all entries matching a specific criteria from the
 database stored at: /userdata/addon_data/<your_addon_id>/database.db
 
@@ -827,7 +827,7 @@ database stored at: /userdata/addon_data/<your_addon_id>/database.db
 
 ------------------------------------------------------------------------------------------
 
-##REMOVE ROW FROM TABLE:
+###### REMOVE ROW FROM TABLE:
 Remove entries in the db table at /userdata/addon_data/<your_addon_id>/database.db
 
 	CODE:  Remove_From_Table(table, spec, [compare_operator])
@@ -865,7 +865,7 @@ Remove entries in the db table at /userdata/addon_data/<your_addon_id>/database.
 
 ------------------------------------------------------------------------------------------
 
-##REMOVE TABLE:
+###### REMOVE TABLE:
 Use with caution, this will completely remove a database table and
 all of it's contents. The only database you can access with this command
 is your add-ons own db file called database.db
@@ -883,11 +883,11 @@ is your add-ons own db file called database.db
 
 ------------------------------------------------------------------------------------------
 
-#D I A L O G S
+## D I A L O G S
 
 ------------------------------------------------------------------------------------------
 
-##BROWSE TO A FILE AND RETURN PATH:
+###### BROWSE TO A FILE AND RETURN PATH:
 This will allow the user to browse to a specific file and return the path.
 
 IMPORTANT: Do not confuse this with the Browse_To_Folder function
@@ -919,7 +919,7 @@ IMPORTANT: Do not confuse this with the Browse_To_Folder function
 
 ------------------------------------------------------------------------------------------
 
-##BROWSE TO A FOLDER AND RETURN PATH:
+###### BROWSE TO A FOLDER AND RETURN PATH:
 As the title suggests this will bring up a dialog that allows the user to browse to a folder
 and the path is then returned.
 
@@ -942,7 +942,7 @@ IMPORTANT: Do not confuse this with the Browse_To_File function
 
 ------------------------------------------------------------------------------------------
 
-COUNTDOWN TIMER:
+###### COUNTDOWN TIMER:
 Bring up a countdown timer and return true if waited or false if cancelled.
 
 	CODE: Countdown(title, message, update_msg, wait_time, allow_cancel, cancel_msg):
@@ -984,7 +984,7 @@ Bring up a countdown timer and return true if waited or false if cancelled.
 
 ------------------------------------------------------------------------------------------
 
-CUSTOM DIALOG:
+###### CUSTOM DIALOG:
 A fully customisable dialog where you can have as many buttons as you want.
 Similar behaviour to the standard Kodi yesno dialog but this allows as many buttons
 as you want, as much text as you want (with a slider) as well as fully configurable
@@ -1065,7 +1065,7 @@ sizing and positioning.
 
 ------------------------------------------------------------------------------------------
 
-ENABLE/DISABLE THE BUSY (WORKING) SYMBOL:
+###### ENABLE/DISABLE THE BUSY (WORKING) SYMBOL:
 This will show/hide a "working" symbol.
 
 	CODE: Show_Busy([status, sleep])
@@ -1089,7 +1089,7 @@ This will show/hide a "working" symbol.
 
 ------------------------------------------------------------------------------------------
 
-KEYBOARD:
+###### KEYBOARD:
 Show an on-screen keyboard and return the string
 
 	CODE: koding.Keyboard([default, heading, hidden, return_false, autoclose, kb_type])
@@ -1145,7 +1145,7 @@ Show an on-screen keyboard and return the string
 
 ------------------------------------------------------------------------------------------
 
-NOTIFICATION POPUP:
+###### NOTIFICATION POPUP:
 Show a short notification for x amount of seconds
 
 	CODE: koding.Notify(title, message, [duration, icon])
@@ -1166,7 +1166,7 @@ Show a short notification for x amount of seconds
 
 ------------------------------------------------------------------------------------------
 
-OK DIALOG:
+###### OK DIALOG:
 This will bring up a short text message in a dialog.ok window.
 
 	CODE: OK_Dialog(title,message)
@@ -1183,7 +1183,7 @@ This will bring up a short text message in a dialog.ok window.
 
 ------------------------------------------------------------------------------------------
 
-PERCENTAGE RESET (CUSTOM DIALOGS):
+###### PERCENTAGE RESET (CUSTOM DIALOGS):
 If using the Update_Progress function for setting percentages in skinning then this
 will allow you to reset all the percent properties (1-100)
 
@@ -1202,7 +1202,7 @@ will allow you to reset all the percent properties (1-100)
 
 ------------------------------------------------------------------------------------------
 
-SELECTION DIALOG
+###### SELECTION DIALOG
 This will bring up a selection of options to choose from. The options are
 sent through as a list and only one can be selected - this is not a multi-select dialog.
 
@@ -1229,7 +1229,7 @@ sent through as a list and only one can be selected - this is not a multi-select
 
 ------------------------------------------------------------------------------------------
 
-TEXT BOX (LARGE WINDOW OF TEXT):
+###### TEXT BOX (LARGE WINDOW OF TEXT):
 This will allow you to open a blank window and fill it with some text.
 
 	CODE: koding.Text_Box(header, message)
@@ -1247,7 +1247,7 @@ This will allow you to open a blank window and fill it with some text.
 
 ------------------------------------------------------------------------------------------
 
-UPDATE PROGRESS:
+###### UPDATE PROGRESS:
 This function is designed for skinners but can be used for general Python too. It will
 work out the current percentage of items that have been processed and update the
 "update_percent" property accordingly (1-100). You can also send through any properties
@@ -1269,7 +1269,7 @@ Example: Update_Progress( total_items=100,current_item=56, {"myproperty1":"test1
 
 ------------------------------------------------------------------------------------------
 
-UPDATE SCREEN:
+###### UPDATE SCREEN:
 This will create a full screen overlay showing progress of updates. You'll need to
 use this in conjunction with the Update_Progress function.
 
@@ -1318,7 +1318,7 @@ use this in conjunction with the Update_Progress function.
 
 ------------------------------------------------------------------------------------------
 
-YES/NO DIALOG:
+###### YES/NO DIALOG:
 This will bring up a short text message in a dialog.yesno window. This will
 return True or False
 
@@ -1342,11 +1342,11 @@ return True or False
 
 ------------------------------------------------------------------------------------------
 
-D I R E C T O R Y   F U N C T I O N S
+## D I R E C T O R Y   F U N C T I O N S
 
 ------------------------------------------------------------------------------------------
 
-ADD DIRECTORY ITEM:
+###### ADD DIRECTORY ITEM:
 This allows you to create a list item/folder inside your add-on.
 Please take a look at your addon default.py comments for more information
 (presuming you created one at http://totalrevolution.tv)
@@ -1441,7 +1441,7 @@ params = eval(url)
 
 ------------------------------------------------------------------------------------------
 
-ROUTE:
+###### ROUTE:
 Use this to set a function in your master_modes dictionary.
 This is to be used for Add_Dir() items, see the example below.
 
@@ -1468,7 +1468,7 @@ This is to be used for Add_Dir() items, see the example below.
 
 ------------------------------------------------------------------------------------------
 
-RUN:
+###### RUN:
 This needs to be called at the bottom of your code in the main default.py
 
 This checks the modes called in Add_Dir and does all the clever stuff
@@ -1490,11 +1490,11 @@ sure you set the endOfDirectory (as shown below).
 
 ------------------------------------------------------------------------------------------
 
-F I L E   T O O L S
+## F I L E   T O O L S
 
 ------------------------------------------------------------------------------------------
 
-CLEAN CACHED IMAGES:
+###### CLEAN CACHED IMAGES:
 This will check for any cached artwork and wipe if it's not been accessed more than 10 times in the past x amount of days.
 
 	CODE: Cleanup_Textures([frequency, use_count])
@@ -1515,7 +1515,7 @@ This will check for any cached artwork and wipe if it's not been accessed more t
 
 ------------------------------------------------------------------------------------------
 
-COMPRESS FILES:
+###### COMPRESS FILES:
 Compress files in either zip or tar format. This will most likely be replacing
 Archive_Tree longer term as this has better functionality but it's currently
 missing the custom message and exclude files options.
@@ -1568,7 +1568,7 @@ find this problem is still occuring please let me know on the forum at http://to
 
 ------------------------------------------------------------------------------------------
 
-CONVERT PHYSICAL PATHS TO SPECIAL:
+###### CONVERT PHYSICAL PATHS TO SPECIAL:
 	Convert physcial paths stored in text files to their special:// equivalent or
 	replace instances of physical paths to special in a string sent through.
 
@@ -1599,7 +1599,7 @@ CONVERT PHYSICAL PATHS TO SPECIAL:
 
 ------------------------------------------------------------------------------------------
 
-CREATE A DUMMY FILE:
+###### CREATE A DUMMY FILE:
 Create a dummy file in whatever location you want and with the size you want.
 Use very carefully, this is designed for testing purposes only. Accidental
 useage can result in the devices storage becoming completely full in just a
@@ -1628,7 +1628,7 @@ with very poor components which are liable to irreversable corruption.
 
 ------------------------------------------------------------------------------------------
 
-CREATE PATHS:
+###### CREATE PATHS:
 Send through a path to a file, if the directories required do not exist this will create them.
 
 	CODE: Create_Paths(path)
@@ -1647,7 +1647,7 @@ Send through a path to a file, if the directories required do not exist this wil
 
 ------------------------------------------------------------------------------------------
 
-DELETE CRASHLOGS
+###### DELETE CRASHLOGS
 Delete all kodi crashlogs. This function will retun the amount of successfully removed crashlogs.
 
 	CODE: Delete_Crashlogs([extra_paths])
@@ -1674,7 +1674,7 @@ Delete all kodi crashlogs. This function will retun the amount of successfully r
 
 ------------------------------------------------------------------------------------------
 
-DELETE FILES IN PATH:
+###### DELETE FILES IN PATH:
 Delete all specific filetypes in a path (including sub-directories)
 
 	CODE: Delete_Files([filepath, filetype, subdirectories])
@@ -1705,7 +1705,7 @@ Delete all specific filetypes in a path (including sub-directories)
 
 ------------------------------------------------------------------------------------------
 
-DELETE A FOLDER PATH:
+###### DELETE A FOLDER PATH:
 Completely delete a folder and all it's sub-folders. With the ability to add
 an ignore list for any folders/files you don't want removed.
 
@@ -1749,7 +1749,7 @@ an ignore list for any folders/files you don't want removed.
 
 ------------------------------------------------------------------------------------------
 
-EXTRACT:
+###### EXTRACT:
 This function will extract a zip or tar file and return true or false so unlike the
 builtin xbmc function "Extract" this one will pause code until it's completed the action.
 
@@ -1791,7 +1791,7 @@ builtin xbmc function "Extract" this one will pause code until it's completed th
 
 ------------------------------------------------------------------------------------------
 
-FREE SPACE:
+###### FREE SPACE:
 Show the amount of available free space in a path, this can be returned in a number of different formats.
 
 	CODE: Free_Space([dirname, filesize])
@@ -1820,7 +1820,7 @@ Show the amount of available free space in a path, this can be returned in a num
 
 ------------------------------------------------------------------------------------------
 
-FOLDER SIZE:
+###### FOLDER SIZE:
 Return the size of a folder path including sub-directories,
 this can be returned in a number of different formats.
 
@@ -1851,7 +1851,7 @@ this can be returned in a number of different formats.
 
 ------------------------------------------------------------------------------------------
 
-FRESH INSTALL:
+###### FRESH INSTALL:
 Attempt to completely wipe your install. You can send through a list
 of addons or paths you want to ignore (leave in the setup) or you can
 leave blank. If left blank and the platform is OpenELEC or LibreELEC
@@ -1891,7 +1891,7 @@ it will perform a hard reset command followed by a reboot.
 	        clean_state = koding.Fresh_Install()
 ------------------------------------------------------------------------------------------
 
-GET CONTENTS OF A PATH (INC. SUB-DIRECTORIES)
+###### GET CONTENTS OF A PATH (INC. SUB-DIRECTORIES)
 Return a list of either files or folders in a given path.
 
 	CODE:  Get_Contents(path, [folders, subfolders, exclude_list, full_path, filter])
@@ -1926,7 +1926,7 @@ Return a list of either files or folders in a given path.
 
 ------------------------------------------------------------------------------------------
 
-HIGHEST VERSION:
+###### HIGHEST VERSION:
 Send through a list of strings which all have a common naming structure,
 the one with the highest version number will be returned.
 
@@ -1954,7 +1954,7 @@ the one with the highest version number will be returned.
 
 ------------------------------------------------------------------------------------------
 
-MOVE A DIRECTORY:
+###### MOVE A DIRECTORY:
 Move a directory including all sub-directories to a new location.
 This will automatically create the new location if it doesn't already
 exist and it wierwrite any existing entries if they exist.
@@ -1997,7 +1997,7 @@ exist and it wierwrite any existing entries if they exist.
 
 ------------------------------------------------------------------------------------------
 
-PATH TO CURRENT "LIVE" DATABASE:
+###### PATH TO CURRENT "LIVE" DATABASE:
 If you need to find out the current "real" database in use then this is the function for you.
 It will scan for a specific database type (e.g. addons) and return the path to the one which was last updated.
 This is particularly useful if the system has previously updated to a newer version rather than a fresh install
@@ -2019,7 +2019,7 @@ or if they've installed a "build" which contained old databases.
 
 ------------------------------------------------------------------------------------------
 
-PHYSICAL PATHS:
+###### PHYSICAL PATHS:
 Send through a special:// path and get the real physical path returned.
 This has been written due to the problem where if you're running the Windows Store
 version of Kodi the built-in xbmc.translatePath() function is returning bogus results
@@ -2041,7 +2041,7 @@ making it impossible to access databases.
 
 ------------------------------------------------------------------------------------------
 
-READ/WRITE TEXT FILES:
+###### READ/WRITE TEXT FILES:
 Open/create a text file and read/write to it.
 
 	CODE: koding.Text_File(path, mode, [text])
@@ -2071,7 +2071,7 @@ Open/create a text file and read/write to it.
 
 ------------------------------------------------------------------------------------------
 
-RETURN END OF A PATH:
+###### RETURN END OF A PATH:
 Split the path at every '/' and return the final file/folder name.
 If your path uses backslashes rather than forward slashes it will use
 that as the separator.
@@ -2093,11 +2093,11 @@ that as the separator.
 
 ------------------------------------------------------------------------------------------
 
-S Y S T E M   B A S E D   F U N C T I O N S
+## S Y S T E M   B A S E D   F U N C T I O N S
 
 ------------------------------------------------------------------------------------------
 
-CURRENT PROFILE:
+###### CURRENT PROFILE:
 This will return the current running profile, it's only one line of code but this is for my benefit as much as
 anyone else's. I use this function quite a lot and keep forgetting the code so figured it would be easier to
 just write a simple function for it :)
@@ -2111,7 +2111,7 @@ just write a simple function for it :)
 
 ------------------------------------------------------------------------------------------
 
-CURRENT TIMESTAMP:
+###### CURRENT TIMESTAMP:
 This will return the timestamp in various formats. By default it returns as "integer" mode but other options are listed below:
 
 	CODE: Timestamp(mode)
@@ -2140,7 +2140,7 @@ This will return the timestamp in various formats. By default it returns as "int
 
 ------------------------------------------------------------------------------------------
 
-ENABLE/DISABLE/SET VARIOUS KODI SETTINGS:
+###### ENABLE/DISABLE/SET VARIOUS KODI SETTINGS:
 Use this to set built-in kodi settings via JSON or set skin settings.
 
 	CODE: Set_Setting(setting, [setting_type, value])
@@ -2186,7 +2186,7 @@ Use this to set built-in kodi settings via JSON or set skin settings.
 
 ------------------------------------------------------------------------------------------
 
-FORCE CLOSE:
+###### FORCE CLOSE:
 Force close Kodi, should only be used in extreme circumstances.
 
 	CODE: Force_Close()
@@ -2198,7 +2198,7 @@ Force close Kodi, should only be used in extreme circumstances.
 
 ------------------------------------------------------------------------------------------
 
-GET USER ID & GROUP ID:
+###### GET USER ID & GROUP ID:
 A simple function to set user id and group id to the current running App
 for system commands. For example if you're using the subprocess command
 you could send through the preexec_fn paramater as koding.Get_ID(setid=True).
@@ -2223,7 +2223,7 @@ This function will also return the uid and gid in form of a dictionary.
 
 ------------------------------------------------------------------------------------------
 
-GRAB LOG:
+###### GRAB LOG:
 This will grab the log file contents, works on all systems even forked kodi.
 
 	CODE:  Grab_Log([log_type, formatting, sort_order])
@@ -2264,7 +2264,7 @@ This will grab the log file contents, works on all systems even forked kodi.
 
 ------------------------------------------------------------------------------------------
 
-LAST ERROR:
+###### LAST ERROR:
 Return details of the last error produced, perfect for try/except statements
 
 	CODE: Last_Error()
@@ -2294,7 +2294,7 @@ distros so if you know of any improved code please do pass on. Thank you.
 
 ------------------------------------------------------------------------------------------
 
-PRINT TO LOG - DEBUG MODE:
+###### PRINT TO LOG - DEBUG MODE:
 Print to the Kodi log but only if debugging is enabled in settings.xml
 
 	CODE: koding.dolog(string, [my_debug])
@@ -2320,7 +2320,7 @@ Print to the Kodi log but only if debugging is enabled in settings.xml
 
 ------------------------------------------------------------------------------------------
 
-PYTHON VERSION:
+###### PYTHON VERSION:
 Return the current version of Python as a string. Very useful if you need
 to find out whether or not to return https links (Python 2.6 is not SSL friendly).
 
@@ -2333,7 +2333,7 @@ CODE: Python_Version()
 
 ------------------------------------------------------------------------------------------
 
-REFRESH/RELOAD VARIOUS SECTIONS:
+###### REFRESH/RELOAD VARIOUS SECTIONS:
 Refresh a number of items in kodi, choose the order they are
 executed in by putting first in your r_mode. For example if you
 want to refresh addons then repo and then the profile you would
@@ -2376,7 +2376,7 @@ send through a list in the order you want them to be executed.
 
 ------------------------------------------------------------------------------------------
 
-REQUIREMENTS:
+###### REQUIREMENTS:
 Return the min and max versions of built-in kodi dependencies required by
 the running version of Kodi (xbmc.gui, xbmc.python etc.), The return will
 be a dictionary with the keys 'min' and 'max'.
@@ -2397,7 +2397,7 @@ be a dictionary with the keys 'min' and 'max'.
 
 ------------------------------------------------------------------------------------------
 
-RUNNING APP:
+###### RUNNING APP:
 Return the Kodi app name you're running, useful for fork compatibility
 
 	CODE: Running_App()
@@ -2410,7 +2410,7 @@ Return the Kodi app name you're running, useful for fork compatibility
 
 ------------------------------------------------------------------------------------------
 
-SLEEP IF FUNCTION ACTIVE:
+###### SLEEP IF FUNCTION ACTIVE:
 This will allow you to pause code while a specific function is
 running in the background.
 
@@ -2444,7 +2444,7 @@ running in the background.
 
 ------------------------------------------------------------------------------------------
 
-SLEEP IF WINDOW/DIALOG IS ACTIVE:
+###### SLEEP IF WINDOW/DIALOG IS ACTIVE:
 This will allow you to pause code while a specific window is open.
 
 	CODE: Sleep_If_Window_Active(window_type)
@@ -2464,7 +2464,7 @@ This will allow you to pause code while a specific window is open.
 
 ------------------------------------------------------------------------------------------
 
-SYSTEM COMMANDS:
+###### SYSTEM COMMANDS:
 This is just a simplified method of grabbing certain Kodi infolabels, paths
 and booleans as well as performing some basic built in kodi functions.
 We have a number of regularly used functions added to a dictionary which can
@@ -2542,11 +2542,11 @@ bool: http://kodi.wiki/view/List_of_boolean_conditions
 
 ------------------------------------------------------------------------------------------
 
-V A R I A B L E    /   S T R I N G    B A S E D   F U N C T I O N S
+## V A R I A B L E    /   S T R I N G    B A S E D   F U N C T I O N S
 
 ------------------------------------------------------------------------------------------
 
-ASCII CHECK:
+###### ASCII CHECK:
 Return a list of files found containing non ASCII characters in the filename.
 
 	CODE: ASCII_Check([sourcefile, dp])
@@ -2573,7 +2573,7 @@ Return a list of files found containing non ASCII characters in the filename.
 
 ------------------------------------------------------------------------------------------
 
-CLEANUP A STRING:
+###### CLEANUP A STRING:
 Clean a string, removes whitespaces and common buggy formatting when pulling from websites
 
 	CODE: Cleanup_String(my_string)
@@ -2591,7 +2591,7 @@ Clean a string, removes whitespaces and common buggy formatting when pulling fro
 
 ------------------------------------------------------------------------------------------
 
-DATA TYPE:
+###### DATA TYPE:
 This will return whether the item received is a dictionary, list, string, integer etc.
 
 	CODE:  Data_Type(data)
@@ -2623,7 +2623,7 @@ This will return whether the item received is a dictionary, list, string, intege
 
 ------------------------------------------------------------------------------------------
 
-DECODE STRING TO CLEAN TEXT:
+###### DECODE STRING TO CLEAN TEXT:
 This will allow you to send a string which contains a variety of special characters (including
 non ascii, unicode etc.) and it will convert into a nice clean string which plays nicely
 with Python and Kodi.
@@ -2643,7 +2643,7 @@ with Python and Kodi.
 		
 ------------------------------------------------------------------------------------------
 
-FANCY TEXT:
+###### FANCY TEXT:
 Capitalize a string and make the first colour of each string blue and the rest of text white
 That's the default colours but you can change to whatever colours you want.
 
@@ -2672,7 +2672,7 @@ That's the default colours but you can change to whatever colours you want.
 
 ------------------------------------------------------------------------------------------
 
-FIND IN TEXT:
+###### FIND IN TEXT:
 Regex through some text and return a list of matches.
 Please note this will return a LIST so even if only one item is found
 you will still need to access it as a list, see example below.
@@ -2702,7 +2702,7 @@ you will still need to access it as a list, see example below.
 
 ------------------------------------------------------------------------------------------
 
-FUZZY MATCH:
+######  FUZZY MATCH:
 Send through a list of items and try to match against the search string.
 This will match where the search_string exists in the list or an item in
 the list exists in the search_string.
@@ -2742,7 +2742,7 @@ the list exists in the search_string.
 
 ------------------------------------------------------------------------------------------
 
-GENERATE RANDOM PASSWORD:
+###### GENERATE RANDOM PASSWORD:
 This will generate a random string made up of uppercase & lowercase ASCII
 characters and digits - it does not contain special characters.
 
@@ -2761,7 +2761,7 @@ characters and digits - it does not contain special characters.
 
 ------------------------------------------------------------------------------------------
 
-LANGUAGE STRINGS:
+###### LANGUAGE STRINGS:
 This will return the relevant language skin as set in the
 resources/language folder for your add-on. By default you'll get
 the language string returned from your current running add-on
@@ -2788,7 +2788,7 @@ any add-on or even the built-in kodi language strings.
 		
 ------------------------------------------------------------------------------------------
 
-LIST FROM DICTIONARY:
+###### LIST FROM DICTIONARY:
 Send through a dictionary and return a list of either the keys or values.
 Please note: The returned list will be sorted in alphabetical order.
 
@@ -2810,7 +2810,7 @@ Please note: The returned list will be sorted in alphabetical order.
 
 ------------------------------------------------------------------------------------------
 
-MERGE DICTIONARIES:
+###### MERGE DICTIONARIES:
 Send through any number of dictionaries and get a return of one merged dictionary.
 Please note: If you have duplicate keys the value will be overwritten by the final
 dictionary to be checked. So if you send through dicts a-f and the same key exists
@@ -2838,7 +2838,7 @@ in dicts a,e,f the final value for that key would be whatever is set in 'f'.
 
 ------------------------------------------------------------------------------------------
 
-MD5 CHECK:
+###### MD5 CHECK:
 Return the md5 value of string/file/directory, this will return just one unique value.
 
 	CODE: md5_check(src,[string])
@@ -2868,7 +2868,7 @@ Return the md5 value of string/file/directory, this will return just one unique 
 
 ------------------------------------------------------------------------------------------
 
-PARSE XML:
+###### PARSE XML:
 Send through the contents of an XML file and pull out a list of matching
 items in the form of dictionaries. When checking your results you should
 allow for lists to be returned, by default each tag found in the xml will
@@ -2908,7 +2908,7 @@ returned you can use the Data_Type function from Koding which will return 'str' 
 
 ------------------------------------------------------------------------------------------
 
-REMOVE FORMATTING FROM TEXT:
+###### REMOVE FORMATTING FROM TEXT:
 This will cleanup a Kodi string, it can remove color, bold and italic tags as well as
 preceding spaces, dots and dashes. Particularly useful if you want to show the names of
 add-ons in alphabetical order where add-on names have deliberately had certain formatting
@@ -2949,7 +2949,7 @@ added to them to get them to always show at the top of lists.
 
 ------------------------------------------------------------------------------------------
 
-SPLIT LIST:
+###### SPLIT LIST:
 Send through a list and split it up into multiple lists. You can choose to create
 lists of every x amount of items or you can split at every nth item and only include
 specific items in your new list.
@@ -2992,7 +2992,7 @@ specific items in your new list.
 
 ------------------------------------------------------------------------------------------
 
-SPLIT STRING INTO LINES OF X AMOUNT OF CHARACTERS:
+###### SPLIT STRING INTO LINES OF X AMOUNT OF CHARACTERS:
 Splits up a piece of text into a list of lines x amount of chars in length.
 
 	CODE: koding.Split_Lines(raw_string, size)
@@ -3012,7 +3012,7 @@ Splits up a piece of text into a list of lines x amount of chars in length.
 
 ------------------------------------------------------------------------------------------
 
-TABLE CONVERT:
+###### TABLE CONVERT:
 Open a web page which a table and pull out the contents of that table
 into a list of dictionaries with your own custom keys.
 
@@ -3044,11 +3044,11 @@ into a list of dictionaries with your own custom keys.
 
 ------------------------------------------------------------------------------------------
 
-V I D E O   T O O L S
+## V I D E O   T O O L S
 
 ------------------------------------------------------------------------------------------
 
-CHECK IF VIDEO PLAYBACK IS SUCCESSFUL:
+###### CHECK IF VIDEO PLAYBACK IS SUCCESSFUL:
 This function will return true or false based on video playback. Simply start a stream
 (whether via an add-on, direct link to URL or local storage doesn't matter), the code will
 then work out if playback is successful. This uses a number of checks and should take into
@@ -3085,7 +3085,7 @@ within a second or two of playback being successful (or not).
 
 ------------------------------------------------------------------------------------------
 
-LAST PLAYED (OR CURRENTLY PLAYING) FILE:
+###### LAST PLAYED (OR CURRENTLY PLAYING) FILE:
 Return the link of the last played (or currently playing) video.
 This differs to the built in getPlayingFile command as that only shows details
 of the current playing file, these details can differ to the url which was
@@ -3107,7 +3107,7 @@ will even return the plugin path if it's been played through an external add-on.
 
 ------------------------------------------------------------------------------------------
 
-M3U / M3U8 PLAYLIST SELECTOR:
+###### M3U / M3U8 PLAYLIST SELECTOR:
 Send through an m3u/m3u8 playlist and have the contents displayed via a dialog select.
 The return will be a dictionary of 'name' and 'url'. You can send through either
 a locally stored filepath or an online URL.
@@ -3146,7 +3146,7 @@ a blog page).
 
 ------------------------------------------------------------------------------------------
 
-PLAY VIDEO:
+###### PLAY VIDEO:
 This will attempt to play a video and return True or False on
 whether or not playback was successful. This function is similar
 to Check_Playback but this actually tries a number of methods to
@@ -3212,7 +3212,7 @@ function to get the final resolved url.
 	    dialog.ok('PLAYBACK FAILED','Sorry, playback failed :(')
 ------------------------------------------------------------------------------------------
 
-SLEEP IF PLAYBACK IS ACTIVE:
+###### SLEEP IF PLAYBACK IS ACTIVE:
 This will allow you to pause code while kodi is playing audio or video
 
 	CODE: Sleep_If_Playback_Active()
@@ -3227,7 +3227,7 @@ This will allow you to pause code while kodi is playing audio or video
 
 ------------------------------------------------------------------------------------------
 
-TEST LINKS:
+###### TEST LINKS:
 Send through a link and test whether or not it's playable on other devices.
 Many links include items in the query string which lock the content down to your
 IP only so what may open fine for you may not open for anyone else!
@@ -3307,11 +3307,11 @@ The return you'll get is a dictionary of the following items:
 
 ------------------------------------------------------------------------------------------
 
-W E B   T O O L S
+## W E B   T O O L S
 
 ------------------------------------------------------------------------------------------
 
-CLEANUO URL:
+###### CLEANUO URL:
 Clean a url, removes whitespaces and common buggy formatting when pulling from websites
 
 	CODE: Cleanup_URL(url)
@@ -3328,7 +3328,7 @@ Clean a url, removes whitespaces and common buggy formatting when pulling from w
 
 ------------------------------------------------------------------------------------------
 
-DOWNLOAD:
+######   DOWNLOAD:
 This will download a file, currently this has to be a standard download link which doesn't require cookies/login.
 
 	CODE: Download(src,dst,[dp])
@@ -3358,7 +3358,7 @@ This will download a file, currently this has to be a standard download link whi
 
 ------------------------------------------------------------------------------------------
 
-GRAB THE EXTENSION OF A URL:
+###### GRAB THE EXTENSION OF A URL:
 Return the extension of a url
 
 	CODE:   Get_Extension(url)
@@ -3375,7 +3375,7 @@ Return the extension of a url
 
 ------------------------------------------------------------------------------------------
 
-OPEN URL:
+###### OPEN URL:
 If you need to pull the contents of a webpage it's very simple to do so by using this function.
 This uses the Python Requests module, for more detailed info on how the params work
 please look at the following link: http://docs.python-requests.org/en/master/user/advanced/
@@ -3431,7 +3431,7 @@ then I take no responsibility if it doesn't work!
 
 ------------------------------------------------------------------------------------------
 
-VALIDATE LINK:
+###### VALIDATE LINK:
 Returns the code for a particular link, so for example 200 is a good link and 404 is a URL not found
 
 	CODE:   Validate_Link(url,[timeout])
