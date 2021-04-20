@@ -14,11 +14,11 @@ default.py (or whatever your initial opening py document is called) - all you ne
 
 ------------------------------------------------------------------------------------------
 
-# A D D O N   B A S E D   F U N C T I O N S
+## A D D O N   B A S E D   F U N C T I O N S
 
 ------------------------------------------------------------------------------------------
 
-## ADDON GENRE DICTIONARY:
+### ADDON GENRE DICTIONARY:
 Return a dictionary of add-ons which match a specific genre.
 
 	CODE: Addon_Genre([genre, custom_url])
