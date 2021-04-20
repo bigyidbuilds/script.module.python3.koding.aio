@@ -14,11 +14,11 @@ default.py (or whatever your initial opening py document is called) - all you ne
 
 ------------------------------------------------------------------------------------------
 
-A D D O N   B A S E D   F U N C T I O N S
+# A D D O N   B A S E D   F U N C T I O N S
 
 ------------------------------------------------------------------------------------------
 
-ADDON GENRE DICTIONARY:
+## ADDON GENRE DICTIONARY:
 Return a dictionary of add-ons which match a specific genre.
 
 	CODE: Addon_Genre([genre, custom_url])
@@ -48,7 +48,7 @@ Return a dictionary of add-ons which match a specific genre.
 
 ------------------------------------------------------------------------------------------
 
-ADD-ON ID FROM PATH:
+##ADD-ON ID FROM PATH:
 If you know the folder name of an add-on but want to find out the
 addon id (it may not necessarily be the same as folder name) then
 you can use this function. Even if the add-on isn't enabled on the
@@ -68,7 +68,7 @@ system this will regex out the add-on id.
 
 ------------------------------------------------------------------------------------------
 
-ADD-ON INFO:
+##ADD-ON INFO:
 Retrieve details about an add-on, lots of built-in values are available
 such as path, version, name etc.
 
@@ -93,7 +93,7 @@ such as path, version, name etc.
 
 ------------------------------------------------------------------------------------------
 
-ADDON LISTS:
+##ADDON LISTS:
 Return a list of enabled or disabled add-ons found in the database.
 
 	CODE: Addon_List([enabled, inc_new])
@@ -124,7 +124,7 @@ Return a list of enabled or disabled add-ons found in the database.
 
 ------------------------------------------------------------------------------------------
 
-ADDON SERVICE
+##ADDON SERVICE
 Send through an add-on id, list of id's or leave as the default which is "all". This
 will loop through the list of add-ons and return the ones which are run as services.
 
@@ -166,7 +166,7 @@ which are run as services then trying to enable them can cause Kodi to freeze.
 
 ------------------------------------------------------------------------------------------
 
-ADDON SETTINGS - RETRIEVE/SET VALUE:
+##ADDON SETTINGS - RETRIEVE/SET VALUE:
 Change or retrieve an add-on setting.
 
 	CODE: Addon_Setting(setting, [value, addon_id])
@@ -194,7 +194,7 @@ Change or retrieve an add-on setting.
 
 ------------------------------------------------------------------------------------------
 
-ADDON SETTINGS - OPEN:
+##ADDON SETTINGS - OPEN:
 By default this will open the current add-on settings but if you pass through an addon_id it will open the settings for that add-on.
 
 	CODE: Open_Settings([addon_id, focus, click, stop_script])
@@ -227,7 +227,7 @@ By default this will open the current add-on settings but if you pass through an
 
 ------------------------------------------------------------------------------------------
 
-ADDON TOGGLE:
+##ADDON TOGGLE:
 Send through either a list of add-on ids or one single add-on id.
 The add-ons sent through will then be added to the addons*.db
 and enabled or disabled (depending on state sent through).
@@ -287,7 +287,7 @@ DO NOT set safe_mode to False unless you 100% understand the consequences!
 
 ------------------------------------------------------------------------------------------
 
-ADULT TOGGLE:
+##ADULT TOGGLE:
 Remove/Enable a list of add-ons, these are put into a containment area until enabled again.
 
 CODE: Adult_Toggle(adult_list, [disable, update_status])
@@ -308,7 +308,7 @@ AVAILABLE PARAMS:
 
 ------------------------------------------------------------------------------------------
 
-CALLER(S) OF FUNCTION:
+##CALLER(S) OF FUNCTION:
 Return the add-on id or path of the script which originally called
 your function. If it's been called through a number of add-ons/scripts
 you can grab a list of paths that have been called.
@@ -350,7 +350,7 @@ you can grab a list of paths that have been called.
 
 ------------------------------------------------------------------------------------------
 
-CHECK REPO AVAILABILITY STATUS:
+##CHECK REPO AVAILABILITY STATUS:
 This will check the status of repo and return True if the repo is online or False
 if it contains paths that are no longer accessible online.
 
@@ -384,7 +384,7 @@ will return the correct results.
 
 ------------------------------------------------------------------------------------------
 
-DEFAULT SETTING:
+##DEFAULT SETTING:
 This will return the DEFAULT value for a setting (as set in resources/settings.xml)
 and optionally reset the current value back to this default. If you pass through
 the setting as blank it will return a dictionary of all default settings.
@@ -412,7 +412,7 @@ the setting as blank it will return a dictionary of all default settings.
 
 ------------------------------------------------------------------------------------------
 
-DELETE COOKIES:
+##DELETE COOKIES:
 This will delete your cookies file.
 
 	CODE: Delete_Cookies([filename])
@@ -431,7 +431,7 @@ This will delete your cookies file.
 
 ------------------------------------------------------------------------------------------
 
-DEPENDENCY CHECK:
+##DEPENDENCY CHECK:
 This will return a list of all dependencies required by an add-on.
 This information is grabbed directly from the currently installed addon.xml,
 an individual add-on id or a list of add-on id's.
@@ -459,7 +459,7 @@ an individual add-on id or a list of add-on id's.
 
 ------------------------------------------------------------------------------------------
 
-INSTALLED ADD-ON DETAILS:
+##INSTALLED ADD-ON DETAILS:
 This will send back a list of currently installed add-ons on the system.
 All the three paramaters you can send through to this function are optional,
 by default (without any params) this function will return a dictionary of all
@@ -498,7 +498,7 @@ installed add-ons. The dictionary will contain "addonid" and "type" e.g. 'xbmc.p
 
 ------------------------------------------------------------------------------------------
 
-SETTINGS - CREATE CUSTOM ADD-ON SETTINGS:
+##SETTINGS - CREATE CUSTOM ADD-ON SETTINGS:
 All credit goes to OptimusGREEN for this module.
 
 This will create a new settings file for your add-on which you can read and write to. This is separate
@@ -528,7 +528,7 @@ call it something other than settings.xml as that is already used by Kodi add-on
 
 ------------------------------------------------------------------------------------------
 
-TOGGLE ADD-ONS:
+##TOGGLE ADD-ONS:
 Send through either a list of add-on ids or one single add-on id. The add-ons sent through will then be added
 to the addons*.db and enabled or disabled (depending on state sent through).
 
@@ -580,11 +580,11 @@ the consequences!
 
 ------------------------------------------------------------------------------------------
 
-A N D R O I D   S P E C I F I C
+#A N D R O I D   S P E C I F I C
 
 ------------------------------------------------------------------------------------------
 
-ANDROID APP SETTINGS:
+##ANDROID APP SETTINGS:
 Open up the settings for an installed Android app.
 
 	CODE: App_Settings(apk_id)
@@ -601,7 +601,7 @@ Open up the settings for an installed Android app.
 
 ------------------------------------------------------------------------------------------
 
-INSTALLED APPS:
+##INSTALLED APPS:
 Return a list of apk id's installed on system
 
 	CODE: My_Apps()
@@ -615,7 +615,7 @@ Return a list of apk id's installed on system
 
 ------------------------------------------------------------------------------------------
 
-START ANDROID APP:
+##START ANDROID APP:
 Open an Android application
 
 	CODE: Start_App(apk_id)
@@ -631,7 +631,7 @@ Open an Android application
 
 ------------------------------------------------------------------------------------------
 
-UNINSTALL ANDROID APP
+##UNINSTALL ANDROID APP
 Uninstall and Android app
 
 	CODE: Uninstall_APK(apk_id)
@@ -643,11 +643,11 @@ Uninstall and Android app
 
 ------------------------------------------------------------------------------------------
 
-D A T A B A S E S
+#D A T A B A S E S
 
 ------------------------------------------------------------------------------------------
 
-A GENERIC QUERY:
+##A GENERIC QUERY:
 Open a database and either return an array of results with the SELECT SQL command or perform an action such as INSERT, UPDATE, CREATE.
 
 	CODE:  DB_Query(db_path, query, [values])
@@ -675,7 +675,7 @@ Open a database and either return an array of results with the SELECT SQL comman
 	koding.Text_Box('DB SEARCH RESULTS',str(db_query))
 ------------------------------------------------------------------------------------------
 
-ADD TO TABLE:
+##ADD TO TABLE:
 Add a row to the table in /userdata/addon_data/<your_addon_id>/database.db
 
 	CODE:  Add_To_Table(table, spec)
@@ -706,7 +706,7 @@ Add a row to the table in /userdata/addon_data/<your_addon_id>/database.db
 
 ------------------------------------------------------------------------------------------
 
-ADD MULTIPLE ROWS TO TABLE:
+##ADD MULTIPLE ROWS TO TABLE:
 This will allow you to add multiple rows to a table in one big (fast) bulk command
 The db file is: /userdata/addon_data/<your_addon_id>/database.db
 
@@ -738,7 +738,7 @@ The db file is: /userdata/addon_data/<your_addon_id>/database.db
 
 ------------------------------------------------------------------------------------------
 
-CREATE A NEW TABLE:
+##CREATE A NEW TABLE:
 Create a new table in the database at /userdata/addon_data/<your_addon_id>/database.db
 
 	CODE:  Create_Table(table, spec)
@@ -769,7 +769,7 @@ Create a new table in the database at /userdata/addon_data/<your_addon_id>/datab
 
 ------------------------------------------------------------------------------------------
 
-GET ALL RESULTS FROM A TABLE:
+##GET ALL RESULTS FROM A TABLE:
 Return a list of all entries from a specific table in /userdata/addon_data/<your_addon_id>/database.db
 
 	CODE:  Get_All_From_Table(table)
@@ -795,7 +795,7 @@ Return a list of all entries from a specific table in /userdata/addon_data/<your
 
 ------------------------------------------------------------------------------------------
 
-GET SPECIFIC RESULTS FROM A TABLE:
+##GET SPECIFIC RESULTS FROM A TABLE:
 Return a list of all entries matching a specific criteria from the
 database stored at: /userdata/addon_data/<your_addon_id>/database.db
 
@@ -827,7 +827,7 @@ database stored at: /userdata/addon_data/<your_addon_id>/database.db
 
 ------------------------------------------------------------------------------------------
 
-REMOVE ROW FROM TABLE:
+##REMOVE ROW FROM TABLE:
 Remove entries in the db table at /userdata/addon_data/<your_addon_id>/database.db
 
 	CODE:  Remove_From_Table(table, spec, [compare_operator])
@@ -865,7 +865,7 @@ Remove entries in the db table at /userdata/addon_data/<your_addon_id>/database.
 
 ------------------------------------------------------------------------------------------
 
-REMOVE TABLE:
+##REMOVE TABLE:
 Use with caution, this will completely remove a database table and
 all of it's contents. The only database you can access with this command
 is your add-ons own db file called database.db
@@ -883,11 +883,11 @@ is your add-ons own db file called database.db
 
 ------------------------------------------------------------------------------------------
 
-D I A L O G S
+#D I A L O G S
 
 ------------------------------------------------------------------------------------------
 
-BROWSE TO A FILE AND RETURN PATH:
+##BROWSE TO A FILE AND RETURN PATH:
 This will allow the user to browse to a specific file and return the path.
 
 IMPORTANT: Do not confuse this with the Browse_To_Folder function
@@ -919,7 +919,7 @@ IMPORTANT: Do not confuse this with the Browse_To_Folder function
 
 ------------------------------------------------------------------------------------------
 
-BROWSE TO A FOLDER AND RETURN PATH:
+##BROWSE TO A FOLDER AND RETURN PATH:
 As the title suggests this will bring up a dialog that allows the user to browse to a folder
 and the path is then returned.
 
