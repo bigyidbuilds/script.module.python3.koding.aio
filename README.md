@@ -8,7 +8,7 @@ IMPORTING KODING.PY
 
 addon.xml - just import as you would any other module, the following code would work:
     
-    <import addon="script.module.python.koding.aio.alt" version="0.1"/>
+    <import addon="script.module.python3.koding.aio" version="0.0.1"/>
 
 default.py (or whatever your initial opening py document is called) - all you need is to import koding.
 
