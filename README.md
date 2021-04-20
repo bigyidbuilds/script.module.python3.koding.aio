@@ -18,7 +18,7 @@ default.py (or whatever your initial opening py document is called) - all you ne
 
 ------------------------------------------------------------------------------------------
 
-### ADDON GENRE DICTIONARY:
+###### ADDON GENRE DICTIONARY:
 Return a dictionary of add-ons which match a specific genre.
 
 	CODE: Addon_Genre([genre, custom_url])
