@@ -1,6 +1,6 @@
 ﻿# -*- coding: utf-8 -*-
 
-# script.module.python.koding.19.aio.alt
+# script.module.python3.koding.aio
 # Python Koding AIO (c) by TOTALREVOLUTION LTD (support@trmc.freshdesk.com)
 
 # Python Koding AIO is licensed under a
@@ -120,7 +120,7 @@ Add_Dir(name='TEST ITEM', url='', mode='test_item', folder=False, context_items=
 ~"""
     from .vartools       import Convert_Special, Data_Type
 
-    module_id   =  'script.module.python.koding.19.aio.alt'
+    module_id   =  'script.module.python3.koding.aio'
     this_module =  xbmcaddon.Addon(id=module_id)
 
     addon_handle = int(sys.argv[1])
@@ -181,7 +181,7 @@ Add_Dir(name='TEST ITEM', url='', mode='test_item', folder=False, context_items=
         set_property["Fanart_Image"]
 
 # Set the main listitem properties
-    liz = xbmcgui.ListItem(label=str(name), iconImage=str(icon), thumbnailImage=str(icon))
+    liz = xbmcgui.ListItem(label=str(name))
 
 # Set the infolabels
     liz.setInfo(type=content_type, infoLabels=info_labels)
