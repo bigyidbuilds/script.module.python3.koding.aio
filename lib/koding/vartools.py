@@ -1,6 +1,6 @@
 ﻿# -*- coding: utf-8 -*-
 
-# script.module.python.koding.19.aio.alt
+# script.module.python3.koding.aio
 # Python Koding AIO (c) by TOTALREVOLUTION LTD (support@trmc.freshdesk.com)
 
 # Python Koding AIO is licensed under a
@@ -842,7 +842,7 @@ AVAILABLE PARAMS:
 
 EXAMPLE CODE:
 kodi_string = koding.String(code=10140, source='system')
-koding_string = koding.String(code=30825, source='script.module.python.koding.19.aio.alt')
+koding_string = koding.String(code=30825, source='script.module.python3.koding.aio')
 dialog.ok('SYSTEM STRING','The string [COLOR=dodgerblue]10140[/COLOR] pulled from the default system language resources is:','[COLOR=gold]%s[/COLOR]' % kodi_string)
 dialog.ok('PYTHON KODING STRING','The string [COLOR=dodgerblue]30825[/COLOR] pulled from the Python Koding language resources is:','[COLOR=gold]%s[/COLOR]' % koding_string)
 ~"""
