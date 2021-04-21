@@ -1,6 +1,6 @@
 ﻿# -*- coding: utf-8 -*-
 
-# script.module.python.koding.19.aio.alt
+# script.module.python3.koding.aio
 # Python Koding AIO (c) by TOTALREVOLUTION LTD (support@trmc.freshdesk.com)
 
 # Python Koding AIO is licensed under a
@@ -22,7 +22,7 @@ import xbmcvfs
 from .systemtools import Last_Error
 from .filetools import Physical_Path
 dialog      = xbmcgui.Dialog()
-koding_path = Physical_Path("special://home/addons/script.module.python.koding.19.aio.alt")
+koding_path = Physical_Path("special://home/addons/script.module.python3.koding.aio")
 #----------------------------------------------------------------    
 # TUTORIAL #
 def Browse_To_Folder(header='Select the folder you want to use', path = 'special://home'):
@@ -494,7 +494,7 @@ dialog.ok('MD5 RETURN','The md5 for this password is:', '', '[COLOR=dodgerblue]%
         return False
 #----------------------------------------------------------------    
 # TUTORIAL #
-def Notify(title, message, duration=2000, icon='special://home/addons/script.module.python.koding.19.aio.alt/resources/update.png'):
+def Notify(title, message, duration=2000, icon='special://home/addons/script.module.python3.koding.aio/resources/update.png'):
     """
 Show a short notification for x amount of seconds
 
@@ -710,7 +710,7 @@ mykwargs = {
                          "depending on your internet speed this could take anything from 2 to 10 minutes.\n\n"\
                          "Once downloaded the system will start to install the updates.",\
     "update_bar_color" : "4e91cf",\
-    "update_icon"      : "special://home/addons/script.module.python.koding.19.aio.alt/resources/skins/Default/media/update.png",\
+    "update_icon"      : "special://home/addons/script.module.python3.koding.aio/resources/skins/Default/media/update.png",\
     "update_spinner"   : "true"}
 Update_Screen()
 counter = 1
