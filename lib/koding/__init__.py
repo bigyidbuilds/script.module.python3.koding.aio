@@ -1,6 +1,6 @@
 ﻿# -*- coding: utf-8 -*-
 
-# script.module.python.koding.19.aio.alt
+# script.module.python3.koding.aio
 # Python Koding AIO (c) by TOTALREVOLUTION LTD (support@trmc.freshdesk.com)
 
 # Python Koding AIO is licensed under a
@@ -47,7 +47,7 @@ from .web            import *
 def converthex(url):
     """ internal command ~"""
     import binascii
-    return binascii.unhexlify(url)
+    return str(binascii.unhexlify(url))
 
 try:
     ADDON_ID = xbmcaddon.Addon().getAddonInfo('id')
@@ -61,7 +61,7 @@ TestID           =  ADDON_ID
 if not ADDON_ID.endswith(converthex('2e74657374')):
     TestID       =  ADDON_ID+converthex('2e74657374')
 
-MODULE_ID        =  'script.module.python.koding.19.aio.alt'
+MODULE_ID        =  'script.module.python3.koding.aio'
 ADDON            =  xbmcaddon.Addon(id=ADDON_ID)
 THIS_MODULE      =  xbmcaddon.Addon(id=MODULE_ID)
 USERDATA         =  'special://profile'
@@ -106,13 +106,13 @@ but without the file/line details.')
     import xbmc
     if DEBUG == 'true' or my_debug:
         try:
-            xbmc.log('### %s (%s) : %s'%(ADDON_ID,AddonVersion,string), level=xbmc.LOGNOTICE)
+            xbmc.log('### %s (%s) : %s'%(ADDON_ID,AddonVersion,string), level=xbmc.LOGINFO)
         except:
-            xbmc.log(Last_Error(),level=xbmc.LOGNOTICE)
+            xbmc.log(Last_Error(),level=xbmc.LOGINFO)
     if line_info:
         try:
             from inspect import getframeinfo, stack
             caller = getframeinfo(stack()[1][0])
-            xbmc.log('^ Line No. %s  |  File: %s'%(caller.lineno,caller.filename),level=xbmc.LOGNOTICE)
+            xbmc.log('^ Line No. %s  |  File: %s'%(caller.lineno,caller.filename),level=xbmc.LOGINFO)
         except:
-            xbmc.log(Last_Error(),level=xbmc.LOGNOTICE)
+            xbmc.log(Last_Error(),level=xbmc.LOGINFO)
