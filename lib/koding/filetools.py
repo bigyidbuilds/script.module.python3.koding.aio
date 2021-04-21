@@ -1,6 +1,6 @@
 ﻿# -*- coding: utf-8 -*-
 
-# script.module.python.koding.19.aio.alt
+# script.module.python3.koding.aio
 # Python Koding AIO (c) by TOTALREVOLUTION LTD (support@trmc.freshdesk.com)
 
 # Python Koding AIO is licensed under a
@@ -53,7 +53,7 @@ SetValue  -  This class allows you to set a value to the custom settings. If the
 
 
 EXAMPLE CODE:
-myXmlFile = "special://userdata/addon_data/script.module.python.koding.19.aio.alt/timefile.xml"
+myXmlFile = "special://userdata/addon_data/script.module.python3.koding.aio/timefile.xml"
 timefile = koding.xml(myXmlFile)
 getSetting = timefile.ParseValue
 setSetting = timefile.SetValue
@@ -179,7 +179,7 @@ AVAILABLE PARAMS:
     'kodi.log','kodi.old.log','xbmc.log','xbmc.old.log','spmc.log','spmc.old.log'
 
 EXAMPLE CODE:
-koding_path = koding.Physical_Path('special://home/addons/script.module.python.koding.19.aio.alt')
+koding_path = koding.Physical_Path('special://home/addons/script.module.python3.koding.aio')
 zip_dest = koding.Physical_Path('special://home/test_addon.zip')
 zip_dest2 = koding.Physical_Path('special://home/test_addon2.zip')
 tar_dest = koding.Physical_Path('special://home/test_addon.tar')
@@ -203,7 +203,7 @@ koding.Text_Box('CHECK HOME FOLDER','If you check your Kodi home folder you shou
         zip = zipfile.ZipFile(dst, 'w', compression=zipfile.ZIP_DEFLATED)
     elif compression == 'tar':
         zip = tarfile.open(dst, mode='w')
-    module_id        =  'script.module.python.koding.19.aio.alt'
+    module_id        =  'script.module.python3.koding.aio'
     this_module      =  xbmcaddon.Addon(id=module_id)
     folder_size      =  Folder_Size(src,'mb')
     available_space  =  Free_Space(HOME,'mb')
@@ -533,7 +533,7 @@ EXAMPLE CODE:
 addons_path = 'special://home/addons'
 file_name = koding.End_Path(path=addons_path)
 dialog.ok('ADDONS FOLDER','Path checked:',addons_path,'Folder Name: [COLOR=dodgerblue]%s[/COLOR]'%file_name)
-file_path = 'special://home/addons/script.module.python.koding.19.aio.alt/addon.xml'
+file_path = 'special://home/addons/script.module.python3.koding.aio/addon.xml'
 file_name = koding.End_Path(path=file_path)
 dialog.ok('FILE NAME','Path checked:',file_path,'File Name: [COLOR=dodgerblue]%s[/COLOR]'%file_name)
 ~"""
@@ -577,7 +577,7 @@ AVAILABLE PARAMS:
     will appear showing details of the file which failed to extract.
 
 EXAMPLE CODE:
-koding_path = koding.Physical_Path('special://home/addons/script.module.python.koding.19.aio.alt')
+koding_path = koding.Physical_Path('special://home/addons/script.module.python3.koding.aio')
 zip_dest = koding.Physical_Path('special://home/test_addon.zip')
 extract_dest = koding.Physical_Path('special://home/TEST')
 koding.Compress(src=koding_path,dst=zip_dest,compression='zip',parent=True)
@@ -594,7 +594,7 @@ else:
     import xbmcaddon
     import zipfile
 
-    module_id   = 'script.module.python.koding.19.aio.alt'
+    module_id   = 'script.module.python3.koding.aio'
     this_module = xbmcaddon.Addon(id=module_id)
     nFiles      = 0
     count       = 0
@@ -1007,10 +1007,10 @@ AVAILABLE PARAMS:
     if you leave this out it will just return the path to the root directory (special://home)
 
 EXAMPLE CODE:
-location = 'special://home/addons/script.module.python.koding.19.aio.alt'
+location = 'special://home/addons/script.module.python3.koding.aio'
 real_location = koding.Physical_Path(location)
 xbmc.log(real_location,2)
-dialog.ok('PHYSICAL PATH','The real path of special://home/addons/script.module.python.koding.19.aio.alt is:','[COLOR=dodgerblue]%s[/COLOR]'%real_location)
+dialog.ok('PHYSICAL PATH','The real path of special://home/addons/script.module.python3.koding.aio is:','[COLOR=dodgerblue]%s[/COLOR]'%real_location)
 ~"""
     xbmc_install = xbmcvfs.translatePath('special://xbmc')
     if not "WindowsApps" in xbmc_install:
