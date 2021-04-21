@@ -1,9 +1,9 @@
 # Addon Name: Python Koding 19 AIO Alternate
-# Addon id: script.module.python.koding.19.aio.alt
+# Addon id: script.module.python3.koding.aio
 # Addon Provider: Test Dummy
 msgid ""
 msgstr ""
-"Project-Id-Version: script.module.python.koding.19.aio.alt\n"
+"Project-Id-Version: script.module.python3.koding.aio\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language-Team: English\n"
