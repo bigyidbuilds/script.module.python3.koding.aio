@@ -1,6 +1,6 @@
 ﻿# -*- coding: utf-8 -*-
 
-# script.module.python.koding.19.aio.alt
+# script.module.python3.koding.aio
 # Python Koding AIO (c) by TOTALREVOLUTION LTD (support@trmc.freshdesk.com)
 
 # Python Koding AIO is licensed under a
