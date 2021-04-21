@@ -1,6 +1,6 @@
-﻿# -*- coding: utf-8 -*-
+﻿#-*- coding: utf-8 -*-
 
-# script.module.python.koding.19.aio.alt
+# script.module.python3.koding.aio
 # Python Koding AIO (c) by TOTALREVOLUTION LTD (support@trmc.freshdesk.com)
 
 # Python Koding AIO is licensed under a
@@ -12,7 +12,7 @@
 # Please make sure you've read and understood the license, this code can NOT be used commercially
 # and it can NOT be modified and redistributed. If you're found to be in breach of this license
 # then any affected add-ons will be blacklisted and will not be able to work on the same system
-# as any other add-ons which use this code. Thank you for your cooperation.
+# as any other add-ons which use this code. Thank you for your cooperation.'''
 
 import datetime
 import os
@@ -79,8 +79,8 @@ if comedy_addons:
     
     download_new = True
     local_path   = binascii.hexlify('genre_list')
-    cookie_path  = "special://profile/addon_data/script.module.python.koding.19.aio.alt/cookies/"
-    custom_genres= "special://profile/addon_data/script.module.python.koding.19.aio.alt/genres.txt"
+    cookie_path  = "special://profile/addon_data/script.module.python3.koding.aio/cookies/"
+    custom_genres= "special://profile/addon_data/script.module.python3.koding.aio/genres.txt"
     final_path   = os.path.join(cookie_path,local_path)
     if not xbmcvfs.exists(cookie_path):
         xbmcvfs.mkdirs(cookie_path)
@@ -344,7 +344,7 @@ AVAILABLE PARAMS:
 ~"""
     from .filetools import End_Path, Move_Tree, Physical_Path
 
-    adult_store  = Physical_Path("special://profile/addon_data/script.module.python.koding.19.aio.alt/adult_store")
+    adult_store  = Physical_Path("special://profile/addon_data/script.module.python3.koding.aio/adult_store")
     disable_list = []
     if not xbmcvfs.exists(adult_store):
         xbmcvfs.mkdirs(adult_store)
@@ -679,7 +679,7 @@ AVAILABLE PARAMS:
 
 EXAMPLE CODE:
 dialog.ok('ABOUT','This function allows us to pass through a folder name found in the addons folder and it will return the real id. The vast majority of add-ons use the same folder name as id but there are exceptions. Let\'s check Python Koding...')
-my_id = koding.Get_Addon_ID(folder='script.module.python.koding.19.aio.alt')
+my_id = koding.Get_Addon_ID(folder='script.module.python3.koding.aio')
 dialog.ok('PYTHON KODING ID','The add-on id found for this folder folder is:','[COLOR=dodgerblue]%s[/COLOR]'%my_id)
 ~"""
     from .filetools import Text_File
