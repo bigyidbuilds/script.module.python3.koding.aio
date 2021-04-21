@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# script.module.python.koding.19.aio.alt
+# script.module.python3.koding.aio
 # Python Koding AIO (c) by TOTALREVOLUTION LTD (support@trmc.freshdesk.com)
 
 # Python Koding AIO is licensed under a
@@ -24,7 +24,7 @@ from .guitools    import Show_Busy
 from .systemtools import Last_Error
 
 dp            = xbmcgui.DialogProgress()
-check_started = xbmcvfs.translatePath('special://profile/addon_data/script.module.python.koding.19.aio.alt/temp/playback_in_progress')
+check_started = xbmcvfs.translatePath('special://profile/addon_data/script.module.python3.koding.aio/temp/playback_in_progress')
 #----------------------------------------------------------------
 # TUTORIAL #
 def Check_Playback(ignore_dp=False,timeout=10):
@@ -280,7 +280,7 @@ else:
     from .guitools    import Notify
     from .vartools    import Table_Convert
     from .systemtools import System
-    # xbmc.executebuiltin('RunScript(special://home/addons/script.module.python.koding.19.aio.alt/lib/koding/localproxy.py)')
+    # xbmc.executebuiltin('RunScript(special://home/addons/script.module.python3.koding.aio/lib/koding/localproxy.py)')
     Notify('PLEASE WAIT','Checking Link - Step 1','5000','Video.png')
     isplaying = xbmc.Player().isPlaying()
 
