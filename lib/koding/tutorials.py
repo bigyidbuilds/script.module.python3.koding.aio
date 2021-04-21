@@ -1,6 +1,6 @@
 ﻿# -*- coding: utf-8 -*-
 
-# script.module.python.koding.19.aio.alt
+# script.module.python3.koding.aio
 # Python Koding AIO (c) by TOTALREVOLUTION LTD (support@trmc.freshdesk.com)
 
 # Python Koding AIO is licensed under a
@@ -33,7 +33,7 @@ from .video          import Play_Video
 from .web            import Open_URL
 
 dialog     = xbmcgui.Dialog()
-py_path    = 'special://home/addons/script.module.python.koding.19.aio.alt/lib/koding'
+py_path    = 'special://home/addons/script.module.python3.koding.aio/lib/koding'
 video_base = 'http://totalrevolution.tv/videos/python_koding/'
 #----------------------------------------------------------------
 def Grab_Tutorials():
@@ -78,9 +78,9 @@ def Show_Tutorial(url):
 # Check if an example code segment exists in the comments    
     if 'EXAMPLE CODE:' in raw_find:
         code = re.findall(r'(?<=EXAMPLE CODE:)(?s)(.*$)', raw_find)[0]
-        code = code.replace('script.module.python.koding.19.aio.alt','temp_replace_string')
+        code = code.replace('script.module.python3.koding.aio','temp_replace_string')
         code = code.replace('koding.','').strip()
-        code = code.replace('temp_replace_string','script.module.python.koding.19.aio.alt')
+        code = code.replace('temp_replace_string','script.module.python3.koding.aio')
 
     else:
         code = None
