@@ -51,7 +51,7 @@ def _connect_to_db():
         return d
 
     xbmcvfs.mkdirs(profile_path)
-    db_location = os.path.join(profile_path.decode('utf-8'),'database.db')
+    db_location = os.path.join(profile_path,'database.db')
     db_location = Physical_Path(db_location)
     dbcon = database.connect(db_location)
     dbcon.row_factory = dict_factory
