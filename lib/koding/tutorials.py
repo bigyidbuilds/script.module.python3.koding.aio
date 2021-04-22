@@ -141,6 +141,8 @@ def Show_Tutorial(url):
         choice = dialog.select(name, dialog_array)
         if choice >= 0:
             choice = dialog_array[choice]
+        else:
+            return
         if choice == 'Documentation':
             Text_Box(final_header,full_text
                 .replace('AVAILABLE PARAMS:','[COLOR=dodgerblue]AVAILABLE PARAMS:[/COLOR]')
@@ -152,13 +154,12 @@ def Show_Tutorial(url):
         elif choice == 'Run Example Code':
             codefile = filepath.split(os.sep)
             codefile = codefile[len(codefile)-1].replace('.py','')
-            exec('from %s import *' % codefile)
+            exec('from .{} import *'.format(codefile))
             # exec('from %s import %s' % (codefile, params["name"]))
             exec(code)
         elif choice == 'Watch Video':
             Play_Video(video)
-        if choice < 0:
-            return
+
     else:
         Text_Box(final_header,full_text
             .replace('AVAILABLE PARAMS:','[COLOR=dodgerblue]AVAILABLE PARAMS:[/COLOR]')
