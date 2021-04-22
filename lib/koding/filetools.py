@@ -1049,9 +1049,9 @@ EXAMPLE CODE:
 HOME = koding.Physical_Path('special://home')
 koding_test = os.path.join(HOME, 'koding_test.txt')
 koding.Text_File(path=koding_test, mode='w', text='Well done, you\'ve created a text file containing this text!')
-dialog.ok('CREATE TEXT FILE','If you check your home Kodi folder and you should now have a new koding_test.txt file in there.','[COLOR=gold]DO NOT DELETE IT YET![/COLOR]')
+dialog.ok('CREATE TEXT FILE','If you check your home Kodi folder and you should now have a new koding_test.txt file in there.\n[COLOR=gold]DO NOT DELETE IT YET![/COLOR]')
 mytext = koding.Text_File(path=koding_test, mode='r')
-dialog.ok('TEXT FILE CONTENTS','The text in the file created is:','[COLOR=dodgerblue]%s[/COLOR]'%mytext,'[COLOR=gold]CLICK OK TO DELETE THE FILE[/COLOR]')
+dialog.ok('TEXT FILE CONTENTS','The text in the file created is:\n[COLOR=dodgerblue]{}[/COLOR]\n[COLOR=gold]CLICK OK TO DELETE THE FILE[/COLOR]'.format(mytext))
 try:
     os.remove(koding_test)
 except:
