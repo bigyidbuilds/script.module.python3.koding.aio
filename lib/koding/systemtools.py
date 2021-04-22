@@ -396,7 +396,7 @@ EXAMPLE CODE:
 py_version = koding.Python_Version()
 dialog.ok('PYTHON VERSION','You are currently running:','Python v.%s'%py_version)
 ~"""
-    py_version = '%s.%s'%(sys.version_info[0],sys.version_info[1])
+    py_version = float('{}.{}'.format(sys.version_info[0],sys.version_info[1]))
     return py_version
 #----------------------------------------------------------------
 # TUTORIAL #
@@ -884,7 +884,7 @@ clean_time = koding.Timestamp('clean')
 date_time = koding.Timestamp('date_time')
 import datetime
 installedtime = str(datetime.datetime.now())[:-7]
-dialog.ok('CURRENT TIME','Integer: %s' % integer_time, 'Epoch: %s' % epoch_time, 'Clean: %s' % clean_time)
+dialog.ok('CURRENT TIME','Integer: {}\nEpoch: {}\nClean: {}\n'.format(integer_time,epoch_time,clean_time))
 ~"""
     import time
     import datetime
