@@ -849,7 +849,7 @@ AVAILABLE PARAMS:
     (disable auto updates).
 
 EXAMPLE CODE:
-from systemtools import Refresh
+from .systemtools import Refresh
 xbmc.executebuiltin('ActivateWindow(Videos, addons://sources/video/)')
 xbmc.sleep(2000)
 dialog.ok('DISABLE YOUTUBE','We will now disable YouTube (if installed)')
