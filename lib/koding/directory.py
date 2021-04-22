@@ -173,7 +173,14 @@ Add_Dir(name='TEST ITEM', url='', mode='test_item', folder=False, context_items=
         set_art["icon"]
     except:
         set_art["icon"] = icon
-
+    try:
+        set_art["thumb"]
+    except:
+        set_art["thumb"] = icon
+    try:
+        set_art["fanart"]
+    except:
+        set_art["fanart"] = fanart
 # Set default Fanart if not already sent through via set_property
     try:
         set_property["Fanart_Image"] = fanart
