@@ -280,44 +280,44 @@
         "working": false
     },
     "Open_URL": {
-        "notes": null,
-        "working": false
+        "notes": "Example code required mod",
+        "working": true
     },
     "Parse_XML": {
-        "notes": "updated beautifulsoup to bs4 as import from",
-        "working": false
+        "notes": "updated beautifulsoup to bs4 as import from, although method is floored if multiple tags with same name but different Attributes,propose that this method be changed to elemtree? ",
+        "working": true
     },
     "Physical_Path": {
-        "notes": null,
-        "working": false
+        "notes": "Example code required mod",
+        "working": true
     },
     "Play_Video": {
-        "notes": null,
-        "working": false
+        "notes": "Probably want testing with more links,number of changes made to code",
+        "working": true
     },
     "Python_Version": {
-        "notes": null,
-        "working": false
+        "notes": "Example code required mod",
+        "working": true
     },
     "Refresh": {
-        "notes": null,
-        "working": false
+        "notes": "no mods required",
+        "working": true
     },
     "Remove_Formatting": {
-        "notes": null,
-        "working": false
+        "notes": "no mods required",
+        "working": true
     },
     "Remove_From_Table": {
-        "notes": null,
-        "working": false
+        "notes":"no mods required",
+        "working": true
     },
     "Remove_Table": {
-        "notes": null,
-        "working": false
+        "notes": "no mods required",
+        "working": true
     },
     "Requirements": {
-        "notes": null,
-        "working": false
+        "notes": "Example code required mod",
+        "working": true
     },
     "Reset_Percent": {
         "notes": null,
