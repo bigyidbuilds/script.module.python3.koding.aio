@@ -639,11 +639,13 @@ EXAMPLE CODE:
 dialog.ok('DICTIONARY OF ITEMS','We will now attempt to return a list of the source details pulled from the official Kodi repository addon.xml')
 xml_file = koding.Physical_Path('special://xbmc/addons/repository.xbmc.org/addon.xml')
 xml_file = koding.Text_File(xml_file,'r')
-xbmc.log(xml_file,2)
+xbmc.log(xml_file,level=xbmc.LOGINFO)
 repo_details = koding.Parse_XML(source=xml_file, block='extension', tags=['info','checksum','datadir'])
+xbmc.log(str(repo_details),level=xbmc.LOGINFO)
 counter = 0
 for item in repo_details:
-    dialog.ok( 'REPO %s'%(counter+1),'info path: [COLOR dodgerblue]%s[/COLOR]\nchecksum path: [COLOR dodgerblue]%s[/COLOR]\ndatadir: [COLOR dodgerblue]%s[/COLOR]' % (repo_details[counter]['info'],repo_details[counter]['checksum'],repo_details[counter]['datadir']) )
+    if len(repo_details[counter]) >0:
+        dialog.ok( 'REPO {}'.format(counter+1),'info path: [COLOR dodgerblue]{}[/COLOR]\nchecksum path: [COLOR dodgerblue]{}[/COLOR]\ndatadir: [COLOR dodgerblue]{}[/COLOR]'.format(repo_details[counter]['info'],repo_details[counter]['checksum'],repo_details[counter]['datadir']) )
     counter += 1
 ~"""
     from bs4 import BeautifulSoup
@@ -651,12 +653,12 @@ for item in repo_details:
     my_return = []
 
 # Grab all the blocks of xml to search
-    for myblock in soup.findAll(block):
+    for myblock in soup.find_all(block):
         if myblock:
             my_dict = {}
             for tag in tags:
                 newsoup = BeautifulSoup(str(myblock))
-                newtag  = newsoup.findAll(tag)
+                newtag  = newsoup.find_all(tag)
                 if newtag:
                     xbmc.log(repr(newtag),2)
 
@@ -718,7 +720,7 @@ koding.Text_Box('MASTER PROXY LIST',mytext)
     # Work out the amount of columns in the table
         soup = BeautifulSoup(content)
         my_return = []
-        mytable = soup.findAll('table')[table]
+        mytable = soup.find_all('table')[table]
         if mytable:
             newsoup = BeautifulSoup(str(mytable))
             newtag  = str( newsoup.find('tr') )
