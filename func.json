@@ -400,11 +400,11 @@
         "working": false
     },
     "Update_Progress": {
-        "notes": null,
+        "notes": "This is used with Update_Progress function only",
         "working": false
     },
     "Update_Screen": {
-        "notes": null,
+        "notes": "Requires re doing to make more useable",
         "working": false
     },
     "Validate_Link": {
