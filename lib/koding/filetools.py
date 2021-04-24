@@ -1010,7 +1010,7 @@ EXAMPLE CODE:
 location = 'special://home/addons/script.module.python3.koding.aio'
 real_location = koding.Physical_Path(location)
 xbmc.log(real_location,2)
-dialog.ok('PHYSICAL PATH','The real path of special://home/addons/script.module.python3.koding.aio is:','[COLOR=dodgerblue]%s[/COLOR]'%real_location)
+dialog.ok('PHYSICAL PATH','The real path of special://home/addons/script.module.python3.koding.aio is:\n[COLOR=dodgerblue]{}[/COLOR]'.format(real_location))
 ~"""
     xbmc_install = xbmcvfs.translatePath('special://xbmc')
     if not "WindowsApps" in xbmc_install:
