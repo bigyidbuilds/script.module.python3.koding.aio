@@ -520,7 +520,7 @@ CODE: Running_App()
 EXAMPLE CODE:
 my_kodi = koding.Running_App()
 kodi_ver = xbmc.getInfoLabel("System.BuildVersion")
-dialog.ok('KODI VERSION','You are running:','[COLOR=dodgerblue]%s[/COLOR] - v.%s' % (my_kodi, kodi_ver))
+dialog.ok('KODI VERSION','You are running:\n[COLOR=dodgerblue]{}[/COLOR] - v.{}'.format(my_kodi, kodi_ver))
 ~"""
     root_folder = xbmcvfs.translatePath('special://xbmc')
     xbmc.log(root_folder)
@@ -574,9 +574,9 @@ AVAILABLE PARAMS:
 
 EXAMPLE CODE:
 if dialog.yesno('RSS FEEDS','Would you like to enable or disable your RSS feeds?',yeslabel='ENABLE',nolabel='DISABLE'):
-    koding.Set_Setting(setting_type='kodi_setting', setting='lookandfeel.enablerssfeeds', value='true')
+    koding.Set_Setting(setting_type='kodi_setting', setting="lookandfeel.enablerssfeeds", value=True)
 else:
-    koding.Set_Setting(setting_type='kodi_setting', setting='lookandfeel.enablerssfeeds', value='false')
+    koding.Set_Setting(setting_type='kodi_setting', setting="lookandfeel.enablerssfeeds", value=False)
 ~"""
     try:    import simplejson as json
     except: import json
@@ -585,59 +585,50 @@ else:
 
 # If the setting_type is kodi_setting we run the command to set the relevant values in guisettings.xml
         if setting_type == 'kodi_setting':
-            setting = '"%s"' % setting
-            value = '"%s"' % value
-
-            query = '{"jsonrpc":"2.0", "method":"Settings.SetSettingValue","params":{"setting":%s,"value":%s}, "id":1}' % (setting, value)
-            response = xbmc.executeJSONRPC(query)
-
+            query = {"jsonrpc":"2.0", "method":"Settings.SetSettingValue","params":{"setting":setting,"value":value}, "id":1}
+            response = xbmc.executeJSONRPC(json.dumps(query))
             if 'error' in str(response):
-                query = '{"jsonrpc":"2.0", "method":"Settings.SetSettingValue","params":{"setting":%s,"value":%s}, "id":1}' % (setting, value.replace('"',''))
-                response = xbmc.executeJSONRPC(query)
-                if 'error' in str(response):
-                    xbmc.log('### Error With Setting: %s' % response, 2)
-                    return False
-                else:
-                    return True
+                xbmc.log('### Error With Setting: {}'.format(response),level=xbmc.LOGINFO)
+                return False
             else:
                 return True
 
 # Set a skin string to <value>
         elif setting_type == 'string':
-            xbmc.executebuiltin('Skin.SetString(%s,%s)' % (setting, value))
+            xbmc.executebuiltin('Skin.SetString({},{})'.format(setting, value))
 
 # Set a skin setting to true
         elif setting_type == 'bool_true':
-            xbmc.executebuiltin('Skin.SetBool(%s)' % setting)
+            xbmc.executebuiltin('Skin.SetBool({})'.format(setting))
 
 # Set a skin setting to false
         elif setting_type == 'bool_false':
-            xbmc.executebuiltin('Skin.Reset(%s)' % setting)
+            xbmc.executebuiltin('Skin.Reset({})'.format(setting))
 
 # If we're enabling/disabling an addon        
         elif setting_type == 'addon_enable':
             if setting != '':
-                query = '{"jsonrpc":"2.0", "method":"Addons.SetAddonEnabled","params":{"addonid":"%s", "enabled":%s}, "id":1}' % (setting, value)
-                response = xbmc.executeJSONRPC(query)
+                query = {"jsonrpc":"2.0", "method":"Addons.SetAddonEnabled","params":{"addonid":setting, "enabled":value}, "id":1}
+                response = xbmc.executeJSONRPC(json.dumps(query))
                 if 'error' in str(response):
-                    xbmc.log('### Error in json: %s'%query,2)
-                    xbmc.log('^ %s' % response, 2)
+                    xbmc.log('### Error in json: {}'.format(query),level=xbmc.LOGINFO)
+                    xbmc.log('^ {}'.format(response),level=xbmc.LOGINFO)
                     return False
                 else:
                     return True
 
 # If it's none of the above then it must be a json command so we use the setting_type as the method in json
         elif setting_type == 'json':
-            query = '{"jsonrpc":"2.0", "method":"%s","params":{%s}, "id":1}' % (setting, value)
-            response = xbmc.executeJSONRPC(query)
+            query = {"jsonrpc":"2.0", "method":setting,"params":{value}, "id":1}
+            response = xbmc.executeJSONRPC(json.dumps(query))
             if 'error' in str(response):
-                xbmc.log('### Error With Setting: %s' % response,2)
+                xbmc.log('### Error With Setting: {}'.format(response),level=xbmc.LOGINFO)
                 return False
             else:
                 return True
 
     except:
-        xbmc.log(Last_Error())
+        xbmc.log(Last_Error(),level=xbmc.LOGINFO)
 #----------------------------------------------------------------    
 # TUTORIAL #
 def Sleep_If_Function_Active(function, args=[], kill_time=30, show_busy=True):
@@ -668,7 +659,7 @@ EXAMPLE CODE:
 def Open_Test_URL(url):
     koding.Open_URL(url)
 
-dialog.ok('SLEEP IF FUNCTION ACTIVE','We will now attempt to read a 20MB zip and then give up after 10 seconds.','Press OK to continue.')
+dialog.ok('SLEEP IF FUNCTION ACTIVE','We will now attempt to read a 20MB zip and then give up after 10 seconds.\nPress OK to continue.')
 koding.Sleep_If_Function_Active(function=Open_Test_URL, args=['http://download.thinkbroadband.com/20MB.zip'], kill_time=10, show_busy=True)
 dialog.ok('FUNCTION COMPLETE','Of course we cannot read that file in just 10 seconds so we\'ve given up!')
 ~"""
@@ -806,7 +797,7 @@ EXAMPLE CODE:
 current_time = koding.System(command='time')
 current_label = koding.System(command='currentlabel')
 is_folder = koding.System(command='ListItem.IsFolder', function='bool')
-dialog.ok('PULLED DETAILS','The current time is %s' % current_time, 'Folder status of list item [COLOR=dodgerblue]%s[/COLOR]: %s' % (current_label, is_folder),'^ A zero means False, as in it\'s not a folder.')
+dialog.ok('PULLED DETAILS','The current time is {}\nFolder status of list item [COLOR=dodgerblue]{}[/COLOR]: {}\n^ A zero means False, as in it\'s not a folder.'.format(current_time,current_label, is_folder))
 ~"""
     params = {
     'addonid'       :'xbmc.getInfoLabel("Container.PluginName")',
