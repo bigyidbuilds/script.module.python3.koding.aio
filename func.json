@@ -284,7 +284,7 @@
         "working": false
     },
     "Parse_XML": {
-        "notes": null,
+        "notes": "updated beautifulsoup to bs4 as import from",
         "working": false
     },
     "Physical_Path": {
@@ -328,72 +328,72 @@
         "working": false
     },
     "Running_App": {
-        "notes": null,
-        "working": false
+        "notes": "Example code required mod",
+        "working": true
     },
     "Select_Dialog": {
-        "notes": null,
-        "working": false
+        "notes": "no mods required",
+        "working": true
     },
     "Set_Setting": {
-        "notes": null,
-        "working": false
+        "notes": "xbmc.executeJSONRPC variable required changing to a json.dumps object ",
+        "working": true
     },
     "Show_Busy": {
-        "notes": null,
-        "working": false
+        "notes": "xbmc.executebuiltin methods required changing",
+        "working": true
     },
     "Sleep_If_Function_Active": {
-        "notes": null,
-        "working": false
+        "notes": "Example code required mod",
+        "working": true
     },
     "Sleep_If_Playback_Active": {
-        "notes": null,
-        "working": false
+        "notes": "no mods required",
+        "working": true 
     },
     "Sleep_If_Window_Active": {
-        "notes": null,
-        "working": false
+        "notes": "no mods required",
+        "working": true
     },
     "Split_Lines": {
-        "notes": null,
-        "working": false
+        "notes": "no mods required",
+        "working": true
     },
     "Split_List": {
-        "notes": null,
-        "working": false
+        "notes": "no mods required",
+        "working": true
     },
     "Start_App": {
         "notes": null,
         "working": false
     },
     "String": {
-        "notes": null,
-        "working": false
+        "notes": "Example code required mod",
+        "working": true
     },
     "System": {
-        "notes": null,
-        "working": false
+        "notes": "Example code required mod",
+        "working": true
     },
     "Table_Convert": {
-        "notes": null,
-        "working": false
+        "notes": "updated beautifulsoup to bs4 as import from",
+        "working": true
     },
     "Text_Box": {
-        "notes": null,
-        "working": false
+        "notes": "no code change required, Maybe make more customable rather the show normal text box",
+        "working": true
     },
     "Text_File": {
-        "notes": null,
-        "working": false
+        "notes": "no code change required",
+        "working": true
     },
     "Timestamp": {
-        "notes": null,
-        "working": false
+        "notes": "no code change required",
+        "working": true
     },
     "Toggle_Addons": {
-        "notes": null,
-        "working": false
+        "notes": "no code change required",
+        "working": true
     },
     "Uninstall_APK": {
         "notes": null,
