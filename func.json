@@ -408,16 +408,16 @@
         "working": false
     },
     "Validate_Link": {
-        "notes": null,
-        "working": false
+        "notes": "Removed python version check as http and https work with py3,updated example url to github",
+        "working": true
     },
     "YesNo_Dialog": {
-        "notes": null,
-        "working": false
+        "notes": "No Mods to work",
+        "working": true
     },
     "dolog": {
-        "notes": null,
-        "working": false
+        "notes": "Change level to xbmc.LOGINFO",
+        "working": true
     },
     "md5_check": {
         "notes": null,
@@ -428,7 +428,7 @@
         "working": false
     },
     "xml": {
-        "notes": null,
-        "working": false
+        "notes": "file path for example was missing, no changes to actual code",
+        "working": true
     }
 }
