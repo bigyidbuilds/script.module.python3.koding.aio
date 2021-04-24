@@ -219,13 +219,9 @@ AVAILABLE PARAMS:
     proxies = {"http":"http://10.10.1.10:3128","htts":"https://10.10.1.10:3128"}
 
 EXAMPLE CODE:
-dialog.ok('OPEN FORUM PAGE','We will attempt to open the noobsandnerds forum page and return the contents. You will now be asked for your forum credentials.')
-myurl = 'http://noobsandnerds.com/support/index.php'
-username = koding.Keyboard('ENTER USERNAME')
-password = koding.Keyboard('ENTER PASSWORD')
-params = {"username":username,"password":password}
-xbmc.log(repr(params),2)
-url_contents = koding.Open_URL(url=myurl, payload=params, post_type='get')
+dialog.ok('OPEN KODING README','We will attempt to open the koding aio readme page and return the contents.')
+myurl = 'https://raw.githubusercontent.com/bigyidbuilds/script.module.python3.koding.aio/main/README.md'
+url_contents = koding.Open_URL(url=myurl, post_type='get')
 koding.Text_Box('CONTENTS OF WEB PAGE',url_contents)
 ~"""
     import os
