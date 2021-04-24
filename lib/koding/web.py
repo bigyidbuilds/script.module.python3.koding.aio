@@ -312,17 +312,13 @@ AVAILABLE PARAMS:
     timeout  -  An optional timeout integer for checking url (default is 30 seconds)
 
 EXAMPLE CODE:
-url_code = koding.Validate_Link('http://totalrevolution.tv')
+url_code = koding.Validate_Link('https://github.com/')
 if url_code == 200:
-    dialog.ok('WEBSITE STATUS','The website [COLOR=dodgerblue]totalrevolution.tv[/COLOR] is [COLOR=lime]ONLINE[/COLOR]')
+    dialog.ok('WEBSITE STATUS','The website [COLOR=dodgerblue]github.com[/COLOR] is [COLOR=lime]ONLINE[/COLOR]')
 else:
-    dialog.ok('WEBSITE STATUS','The website [COLOR=dodgerblue]totalrevolution.tv[/COLOR] is [COLOR=red]OFFLINE[/COLOR]')
+    dialog.ok('WEBSITE STATUS','The website [COLOR=dodgerblue]github.com[/COLOR] is [COLOR=red]OFFLINE[/COLOR]')
 ~"""
     import requests
-    import xbmc
-
-    if Python_Version() < 2.7 and url.startswith('https'):
-        url = url.replace('https','http')
 
     try:
         r = requests.get(url,timeout=timeout)
