@@ -394,7 +394,7 @@ CODE: Python_Version()
 
 EXAMPLE CODE:
 py_version = koding.Python_Version()
-dialog.ok('PYTHON VERSION','You are currently running:','Python v.%s'%py_version)
+dialog.ok('PYTHON VERSION','You are currently running:\nPython v.{}'.format(py_version))
 ~"""
     py_version = float('{}.{}'.format(sys.version_info[0],sys.version_info[1]))
     return py_version
@@ -485,7 +485,7 @@ AVAILABLE PARAMS:
 EXAMPLE CODE:
 xbmc_gui = Requirements('xbmc.gui')
 xbmc_python = Requirements('xbmc.python')
-dialog.ok('DEPENDENCIES','[COLOR=dodgerblue]xbmc.gui[/COLOR]  Min: %s  Max: %s'%(xbmc_gui['min'],xbmc_gui['max']),'[COLOR=dodgerblue]xbmc.python[/COLOR]  Min: %s  Max: %s'%(xbmc_python['min'],xbmc_python['max']))
+dialog.ok('DEPENDENCIES','[COLOR=dodgerblue]xbmc.gui[/COLOR]  Min: {}  Max: {}\n[COLOR=dodgerblue]xbmc.python[/COLOR]  Min: {}  Max: {}'.format(xbmc_gui['min'],xbmc_gui['max'],xbmc_python['min'],xbmc_python['max']))
 ~"""
     from .filetools import Physical_Path,Text_File
     from .vartools  import Find_In_Text
