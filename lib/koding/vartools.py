@@ -346,15 +346,17 @@ dialog.ok('SEARCH RESULT','You searched for the start string of "text so " and t
     if content == None or content == False:
         if show_errors:
             dialog.ok('ERROR WITH REGEX','No content sent through - there\'s nothing to scrape. Please check the website address is still active (details at bottom of log).')
-            xbmc.log(content)
+            xbmc.log(content,level=xbmc.LOGINFO)
         return
     if end != '':
-        links = re.findall('%s([\s\S]*?)%s' % (start, end), content)
+        if Data_Type(content)=='bytes':
+            content = content.decode('utf-8')
+        links = re.findall('{}([\s\S]*?){}'.format(start, end), content)
     if len(links)>0:
         return links
     else:
         if show_errors:
-            xbmc.log(content)
+            xbmc.log(content,level=xbmc.LOGINFO)
             dialog.ok('ERROR WITH REGEX','Please check your regex, there was content sent through to search but there are no matches for the regex supplied. The raw content has now been printed to the log')
         return None
 #----------------------------------------------------------------
