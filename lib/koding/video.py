@@ -569,7 +569,7 @@ else:
     dialog.ok('PLAYBACK FAILED','Sorry, playback failed :(')
 ~"""
 
-    xbmc.log('### ORIGINAL VIDEO: %s'%video)
+    xbmc.log('### ORIGINAL VIDEO: {}'.format(video),level=xbmc.LOGINFO)
     if not resolver:
         import resolveurl
         resolver = resolveurl
@@ -581,14 +581,15 @@ else:
         for i in ['title', 'originaltitle', 'tvshowtitle', 'year', 'season', 'episode', 'genre', 'rating', 'votes',
                   'director', 'writer', 'plot', 'tagline']:
             try:
-                meta[i] = xbmc.getInfoLabel('listitem.%s' % i)
+                meta[i] = xbmc.getInfoLabel('listitem.{}'.format(i))
             except:
                 pass
         meta = dict((k, v) for k, v in meta.items() if not v == '')
         if 'title' not in meta:
             meta['title'] = xbmc.getInfoLabel('listitem.label')
         icon = xbmc.getInfoLabel('listitem.icon')
-        item = xbmcgui.ListItem(path=video, iconImage =icon, thumbnailImage=icon)
+        item = xbmcgui.ListItem(path=video)
+        item.setArt({'icon':icon,'thumb':icon})
         if content == "music":
             try:
                 meta['artist'] = xbmc.getInfoLabel('listitem.artist')
@@ -612,7 +613,7 @@ else:
 # if a plugin path is sent we try activate window
     if video.startswith('plugin://'):
         try:
-            xbmc.log('Attempting to play via xbmc.Player().play() method')
+            xbmc.log('Attempting to play via xbmc.Player().play() method',level=xbmc.LOGINFO)
             player.play(video)
             playback = Check_Playback(ignore_dp,timeout)
         except:
@@ -621,69 +622,69 @@ else:
 # If an XBMC action has been sent through we do an executebuiltin command
     elif video.startswith('ActivateWindow') or video.startswith('RunAddon') or video.startswith('RunScript') or video.startswith('PlayMedia'):
         try:
-            xbmc.log('Attempting to play via xbmc.executebuiltin method')
-            xbmc.executebuiltin('%s'%video)
+            xbmc.log('Attempting to play via xbmc.executebuiltin method',level=xbmc.LOGINFO)
+            xbmc.executebuiltin('{}'.format(video))
             playback = Check_Playback(ignore_dp,timeout)
         except:
-            xbmc.log(Last_Error())
+            xbmc.log(Last_Error(),level=xbmc.LOGINFO)
 
     elif ',' in video:
 # Standard xbmc.player method (a comma in url seems to throw resolveurl off)
         try:
-            xbmc.log('Attempting to play via xbmc.Player.play() method')
-            player.play('%s'%video, item)
+            xbmc.log('Attempting to play via xbmc.Player.play() method',level=xbmc.LOGINFO)
+            player.play(video, item)
             playback = Check_Playback(ignore_dp,timeout)
 
 # Attempt to resolve via resolveurl
         except:
             try:
-                xbmc.log('Attempting to resolve via resolveurl module')
-                xbmc.log('video = %s'%video)
+                xbmc.log('Attempting to resolve via resolveurl module',level=xbmc.LOGINFO)
+                xbmc.log('video = {}'.format(video),level=xbmc.LOGINFO)
                 hmf = resolver.HostedMediaFile(url=video, include_disabled=False, include_universal=True)
                 if hmf.valid_url() == True:
                     video = hmf.resolve()
-                    xbmc.log('### VALID URL, RESOLVED: %s'%video)
-                player.play('%s' % video, item)
+                    xbmc.log('### VALID URL, RESOLVED: {}'.format(video))
+                player.play(video, item)
                 playback = Check_Playback(ignore_dp,timeout)
             except:
-                xbmc.log(Last_Error())
+                xbmc.log(Last_Error(),level=xbmc.LOGINFO)
 
 # Play from a db entry - untested
     elif video.isdigit():
         xbmc.log('### Video is digit, presuming it\'s a db item')
-        command = ('{"jsonrpc": "2.0", "id":"1", "method": "Player.Open","params":{"item":{"channelid":%s}}}' % url)
-        xbmc.executeJSONRPC(command)
+        command = {"jsonrpc": "2.0", "id":"1", "method": "Player.Open","params":{"item":{"channelid":url}}}
+        xbmc.executeJSONRPC(json.dumps(command))
         playback = Check_Playback(ignore_dp,timeout)
 
     else:
 # Attempt to resolve via resolveurl
         try:
             xbmc.log('Attempting to resolve via resolveurl module')
-            xbmc.log('video = %s'%video)
+            xbmc.log('video = {}'.format(video))
             hmf = resolver.HostedMediaFile(url=video, include_disabled=False, include_universal=True)
             if hmf.valid_url() == True:
                 video = hmf.resolve()
-                xbmc.log('### VALID URL, RESOLVED: %s'%video)
-            player.play('%s' % video, item)
+                xbmc.log('### VALID URL, RESOLVED: {}'.format(video),level=xbmc.LOGINFO)
+            player.play(video, item)
             playback = Check_Playback(ignore_dp,timeout)
 
 # Standard xbmc.player method
         except:
             try:
-                xbmc.log('Attempting to play via xbmc.Player.play() method')
-                player.play('%s' % video, item)
+                xbmc.log('Attempting to play via xbmc.Player.play() method',level=xbmc.LOGINFO)
+                player.play(video, item)
                 playback = Check_Playback(ignore_dp,timeout)
             except:
-                xbmc.log(Last_Error())
+                xbmc.log(Last_Error(),level=xbmc.LOGINFO)
 
-    xbmc.log('Playback status: %s' % playback)
+    xbmc.log('Playback status: {}'.format(playback))
     Show_Busy(False)
     counter = 1
     dialogprogress = xbmc.getCondVisibility('Window.IsActive(progressdialog)')
     if not ignore_dp:
         while dialogprogress:
             dp.create('Playback Good','Closing dialog...')
-            xbmc.log('Attempting to close dp #%s'%counter)
+            xbmc.log('Attempting to close dp #{}'.format(counter),level=xbmc.LOGINFO)
             dp.close()
             xbmc.sleep(1000)
             counter += 1
