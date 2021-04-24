@@ -589,12 +589,12 @@ xbmc.sleep(5000)
 koding.Show_Busy(status=False)
 ~"""
     if status:
-        xbmc.executebuiltin("ActivateWindow(busydialog)")
+        xbmc.executebuiltin('ActivateWindow(busydialognocancel)')
         if sleep:
             xbmc.sleep(sleep)
-            xbmc.executebuiltin("Dialog.Close(busydialog)")
+            xbmc.executebuiltin('Dialog.Close(busydialognocancel)')
     else:
-        xbmc.executebuiltin("Dialog.Close(busydialog)")
+        xbmc.executebuiltin('Dialog.Close(busydialognocancel)')
 #----------------------------------------------------------------    
 # TUTORIAL #
 def Text_Box(header, message):
