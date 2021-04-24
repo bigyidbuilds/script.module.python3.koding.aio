@@ -646,7 +646,7 @@ for item in repo_details:
     dialog.ok( 'REPO %s'%(counter+1),'info path: [COLOR dodgerblue]%s[/COLOR]\nchecksum path: [COLOR dodgerblue]%s[/COLOR]\ndatadir: [COLOR dodgerblue]%s[/COLOR]' % (repo_details[counter]['info'],repo_details[counter]['checksum'],repo_details[counter]['datadir']) )
     counter += 1
 ~"""
-    from BeautifulSoup import BeautifulSoup
+    from bs4 import BeautifulSoup
     soup = BeautifulSoup(source)
     my_return = []
 
@@ -709,7 +709,7 @@ for item in proxies:
 koding.Text_Box('MASTER PROXY LIST',mytext)
 ~"""
     from .web import Open_URL
-    from BeautifulSoup import BeautifulSoup
+    from bs4  import BeautifulSoup
     table_list=[]
     content = Open_URL(url)
     if content:
@@ -845,8 +845,8 @@ AVAILABLE PARAMS:
 EXAMPLE CODE:
 kodi_string = koding.String(code=10140, source='system')
 koding_string = koding.String(code=30825, source='script.module.python3.koding.aio')
-dialog.ok('SYSTEM STRING','The string [COLOR=dodgerblue]10140[/COLOR] pulled from the default system language resources is:','[COLOR=gold]%s[/COLOR]' % kodi_string)
-dialog.ok('PYTHON KODING STRING','The string [COLOR=dodgerblue]30825[/COLOR] pulled from the Python Koding language resources is:','[COLOR=gold]%s[/COLOR]' % koding_string)
+dialog.ok('SYSTEM STRING','The string [COLOR=dodgerblue]10140[/COLOR] pulled from the default system language resources is:\n[COLOR=gold]{}[/COLOR]'.format(kodi_string))
+dialog.ok('PYTHON KODING STRING','The string [COLOR=dodgerblue]30825[/COLOR] pulled from the Python Koding language resources is:\n[COLOR=gold]{}[/COLOR]'.format(kodi_string))
 ~"""
     import xbmcaddon
     from .addons import Caller
