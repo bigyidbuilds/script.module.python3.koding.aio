@@ -208,6 +208,27 @@ koding.Text_Box('ADDON STATUS',my_return)
         return disabled_list
 #----------------------------------------------------------------
 # TUTORIAL #
+def Addon_Restart(start_addon=''):
+    """
+Stop a Addon running and either restart the addon or start another, uses a script to preform this function 
+
+CODE: Addon_Restart([start_addon])
+
+AVAILABLE PARAMS:
+
+    start_addon  -  by default this is set to the caller addon of the function, but can be any addon on the system 
+
+EXAMPLE CODE:
+dialog.ok('RESTARTING ADDON','We will now attempt to close and restart your addon')
+Addon_Restart()
+~"""
+    if start_addon == '':
+        start_addon = Caller()
+    scriptPath = os.path.join(xbmcvfs.translatePath(Addon_Info('path','script.module.python3.koding.aio')),'resources','scripts','addon_restart.py')
+    xbmc.executebuiltin('RunScript({},{},{})'.format(scriptPath,Caller(),start_addon))
+
+#----------------------------------------------------------------
+# TUTORIAL #
 def Addon_Service(addons='all', mode='list', skip_service=[]):
     """
 Send through an add-on id, list of id's or leave as the default which is "all". This
@@ -751,54 +772,44 @@ koding.Text_Box('LIST OF VIDEO PLUGINS',final_string)
     return addon_dict
 #----------------------------------------------------------------
 # TUTORIAL #
-def Open_Settings(addon_id='',focus='',click=False,stop_script=True):
+def Open_Settings(addon_id='',restart=True,restart_addon=''):
     """
 By default this will open the current add-on settings but if you pass through an addon_id it will open the settings for that add-on.
 
-CODE: Open_Settings([addon_id, focus, click, stop_script])
+CODE: Open_Settings([addon_id,restart,restart_addon])
 
 AVAILABLE PARAMS:
 
     addon_id    - This optional, it can be any any installed add-on id. If nothing is passed
     through the current add-on settings will be opened.
 
-    focus  -  This is optional, if not set the settings will just open to the first item
-    in the list (normal behaviour). However if you want to open to a specific category and
-    setting then enter the number in here separated by a dot. So for example if we want to
-    focus on the 2nd category and 3rd setting in the list we'd send through focus='2.3'
+    restart - By default this is set to True, as soon as the addon settings are closed
+    the current script will stop running and restart
 
-    click  -  If you want the focused item to automatically be clicked set this to True.
-
-    stop_script - By default this is set to True, as soon as the addon settings are opened
-    the current script will stop running. If you pass through as False then the script will
-    continue running in the background - opening settings does not pause a script, Kodi just
-    see's it as another window being opened.
+    restart_addon  -  This is used in combination with restart arg if restart is True by default this is set to the caller addon but by passing another addon id it will attempt to open that   
 
 EXAMPLE CODE:
 youtube_path = xbmcvfs.translatePath('special://home/addons/plugin.video.youtube')
 if os.path.exists(youtube_path):
-    dialog.ok('YOUTUBE SETTINGS','We will now open the YouTube settings.','We will focus on category 2, setting 3 AND send a click.')
-    koding.Open_Settings(addon_id='plugin.video.youtube',focus='2.3',click=True,stop_script=True)
+    dialog.ok('YOUTUBE SETTINGS','We will now open the YouTube settings.\nUpon closung the addons settings your addon will close and open the youtube addon')
+    koding.Open_Settings(addon_id='plugin.video.youtube',restart=True,restart_addon='plugin.video.youtube')
 else:
     dialog.ok('YOUTUBE NOT INSTALLED','We cannot run this example as it uses the YouTube add-on which has not been found on your system.')
 ~"""
     import xbmcaddon
     if addon_id == '':
         addon_id = Caller()
-    xbmc.log('ADDON ID: %s'%addon_id,2)
-    xbmc.executebuiltin('Addon.OpenSettings(%s)' % addon_id)
-    if focus != '':
-        category, setting = focus.split('.')
-        xbmc.executebuiltin('SetFocus(%d)' % (int(category) + 99))
-        xbmc.executebuiltin('SetFocus(%d)' % (int(setting) + 199))
-    if click:
+    if restart_addon == '':
+        restart_addon = Caller()
+    xbmc.log('ADDON ID: {}'.format(addon_id),2)
+    xbmc.executebuiltin('Addon.OpenSettings({})'.format(addon_id))
+    xbmc.sleep(500)
+    while xbmc.getCondVisibility('Window.IsVisible(10140)'):
         xbmc.sleep(500)
-        xbmc.executebuiltin('Action(Select,10140)')
-    if stop_script:
-        try:
-            sys.exit()
-        except:
-            pass
+    else:
+        if restart:
+            Addon_Restart(restart_addon)
+    
 #----------------------------------------------------------------
 # TUTORIAL #
 def Toggle_Addons(addon='all', enable=True, safe_mode=True, exclude_list=[], new_only=True, refresh=True, update_status=0):
