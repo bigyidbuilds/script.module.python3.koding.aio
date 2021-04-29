@@ -124,6 +124,23 @@ Return a list of enabled or disabled add-ons found in the database.
 
 ------------------------------------------------------------------------------------------
 
+###### ADDON RESTART
+Stop a Addon running and either restart the addon or start another, uses a script to preform this function 
+
+CODE: `Addon_Restart([start_addon])`
+
+AVAILABLE PARAMS:
+
+   start_addon  -  by default this is set to the caller addon of the function, but can be any addon on the system 
+
+EXAMPLE CODE:
+
+```
+dialog.ok('RESTARTING ADDON','We will now attempt to close and restart your addon')
+Addon_Restart()
+```
+------------------------------------------------------------------------------------------
+
 ###### ADDON SERVICE
 Send through an add-on id, list of id's or leave as the default which is "all". This
 will loop through the list of add-ons and return the ones which are run as services.
@@ -197,43 +214,36 @@ Change or retrieve an add-on setting.
 ###### ADDON SETTINGS - OPEN:
 By default this will open the current add-on settings but if you pass through an addon_id it will open the settings for that add-on.
 
-	CODE: Open_Settings([addon_id, focus, click, stop_script])
+CODE: `Open_Settings([addon_id,restart,restart_addon])`
 
-	AVAILABLE PARAMS:
+AVAILABLE PARAMS:
 
-	    addon_id    - This optional, it can be any any installed add-on id. If nothing is passed
-	    through the current add-on settings will be opened.
+addon_id    - This optional, it can be any any installed add-on id. If nothing is passed
+through the current add-on settings will be opened.
 
-	    focus  -  This is optional, if not set the settings will just open to the first item
-	    in the list (normal behaviour). However if you want to open to a specific category and
-	    setting then enter the number in here separated by a dot. So for example if we want to
-	    focus on the 2nd category and 3rd setting in the list we'd send through focus='2.3'
+restart - By default this is set to True, as soon as the addon settings are closed
+the current script will stop running and restart
 
-	    click  -  If you want the focused item to automatically be clicked set this to True.
+restart_addon  -  This is used in combination with restart arg if restart is True by default this is set to the caller addon but by passing another addon id it will attempt to open that   
 
-	    stop_script - By default this is set to True, as soon as the addon settings are opened
-	    the current script will stop running. If you pass through as False then the script will
-	    continue running in the background - opening settings does not pause a script, Kodi just
-	    see's it as another window being opened.
-
-	EXAMPLE CODE:
-	-------------
-	youtube_path = xbmc.translatePath('special://home/addons/plugin.video.youtube')
-	if os.path.exists(youtube_path):
-	    dialog.ok('YOUTUBE SETTINGS','We will now open the YouTube settings.','We will focus on category 2, setting 3 AND send a click.')
-	    koding.Open_Settings(addon_id='plugin.video.youtube',focus='2.3',click=True,stop_script=True)
-	else:
-	    dialog.ok('YOUTUBE NOT INSTALLED','We cannot run this example as it uses the YouTube add-on which has not been found on your system.')
-
+EXAMPLE CODE:
+```
+youtube_path = xbmcvfs.translatePath('special://home/addons/plugin.video.youtube')
+if os.path.exists(youtube_path):
+    dialog.ok('YOUTUBE SETTINGS','We will now open the YouTube settings.\nUpon closung the addons settings your addon will close and open the youtube addon')
+    koding.Open_Settings(addon_id='plugin.video.youtube',restart=True,restart_addon='plugin.video.youtube')
+else:
+    dialog.ok('YOUTUBE NOT INSTALLED','We cannot run this example as it uses the YouTube add-on which has not been found on your system.')
+```
 ------------------------------------------------------------------------------------------
 
 ###### ADDON TOGGLE:
 Send through either a list of add-on ids or one single add-on id.
-The add-ons sent through will then be added to the addons*.db
+The add-ons sent through will then be added to the addons\*.db
 and enabled or disabled (depending on state sent through).
 
 WARNING: If safe_mode is set to False this directly edits the
-addons*.db rather than using JSON-RPC. Although directly amending
+addons\*.db rather than using JSON-RPC. Although directly amending
 the db is a lot quicker there is no guarantee it won't cause
 severe problems in later versions of Kodi (this was created for v17).
 DO NOT set safe_mode to False unless you 100% understand the consequences!
@@ -530,11 +540,11 @@ call it something other than settings.xml as that is already used by Kodi add-on
 
 ###### TOGGLE ADD-ONS:
 Send through either a list of add-on ids or one single add-on id. The add-ons sent through will then be added
-to the addons*.db and enabled or disabled (depending on state sent through).
+to the addons\*.db and enabled or disabled (depending on state sent through).
 
-WARNING: If safe_mode is set to False this directly edits the addons*.db rather than using JSON-RPC.
+WARNING: If safe_mode is set to False this directly edits the addons\*.db rather than using JSON-RPC.
 Although directly amending the db is a lot quicker there is no guarantee it won't cause severe problems in
-later versions of Kodi (this was created for v17). DO NOT set safe_mode to False unless you 100% understand
+later versions of Kodi (this was created for v19). DO NOT set safe_mode to False unless you 100% understand
 the consequences!
 
 	CODE:  Toggle_Addons([addon, enable, safe_mode, exclude_list, new_only, refresh])
