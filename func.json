@@ -276,8 +276,8 @@
         "working": false
     },
     "Open_Settings": {
-        "notes": null,
-        "working": false
+        "notes": "Focus and click function no longer working in addons settings xml, changed code so that option to restart addon after addon setting dialog is closed it will also start addon settings you was viewing if requested README.md updated",
+        "working": true
     },
     "Open_URL": {
         "notes": "Example code required mod",
@@ -430,5 +430,9 @@
     "xml": {
         "notes": "file path for example was missing, no changes to actual code",
         "working": true
+    },
+    "Addon_Restart":{
+        "notes":"New fuction added, Also used in  func Open_Settings added to README.md",
+        "working":true
     }
 }
