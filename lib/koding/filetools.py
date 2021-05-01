@@ -500,8 +500,9 @@ koding.Dummy_File(dst=dummy, size=100, size_format='b')
 dialog.ok('DUMMY FILE CREATED','Check your Kodi home folder and you should see a 100 byte test_dummy.txt file.','[COLOR=gold]Press OK to delete this file.[/COLOR]')
 xbmcvfs.delete(dummy)
 ~"""
+    import math
     dst = Physical_Path(dst)
-    xbmc.log('dst: %s'%dst,2)
+    xbmc.log('dst: {}'.format(dst),2)
     if size_format == 'kb':
         size = float(size*1024)
     elif size_format == 'mb':
@@ -509,11 +510,11 @@ xbmcvfs.delete(dummy)
     elif size_format == 'gb':
         size = float(size*1024) * 1024 * 1024
 
-    xbmc.log('format: %s  size: %s'%(size_format, size), 2)
+    xbmc.log('format: {}  size: {}'.format(size_format, size), 2)
 
     f = open(dst,"wb")
-    f.seek(size-1)
-    f.write("\0")
+    f.seek(math.floor(size-1))
+    f.write(b"\0")
     f.close()
 #----------------------------------------------------------------
 # TUTORIAL #
