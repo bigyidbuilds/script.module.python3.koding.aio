@@ -152,7 +152,7 @@
         "working": false
     },
     "Dummy_File": {
-        "notes": null,
+        "notes": "Add math.floor() to f.seek() function to convert file size to a int this will round down the value returned and better then straight convert to int as seek only will take int in py3, changed write() str to bytes ",
         "working": false
     },
     "End_Path": {
@@ -252,28 +252,28 @@
         "working": false
     },
     "Merge_Dicts": {
-        "notes": null,
-        "working": false
+        "notes": "No Mods required",
+        "working": true
     },
     "Move_Tree": {
-        "notes": null,
-        "working": false
+        "notes": "fix to Dummy_File func for example code to work",
+        "working": true
     },
     "My_Apps": {
-        "notes": null,
+        "notes": "Requires testing on android system",
         "working": false
     },
     "Network_Settings": {
-        "notes": null,
-        "working": false
+        "notes": "No Mod required",
+        "working": true
     },
     "Notify": {
-        "notes": null,
-        "working": false
+        "notes": "Code modified",
+        "working": true
     },
     "OK_Dialog": {
-        "notes": null,
-        "working": false
+        "notes": "No mod required",
+        "working": true
     },
     "Open_Settings": {
         "notes": "Focus and click function no longer working in addons settings xml, changed code so that option to restart addon after addon setting dialog is closed it will also start addon settings you was viewing if requested README.md updated",
