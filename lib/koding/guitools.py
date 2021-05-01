@@ -513,7 +513,7 @@ AVAILABLE PARAMS:
 EXAMPLE CODE:
 koding.Notify(title='TEST NOTIFICATION', message='This is a quick 5 second test', duration=5000)
 ~"""
-    xbmc.executebuiltin('XBMC.Notification(%s, %s, %s, %s)' % (title , message , duration, icon))
+    xbmc.executebuiltin('Notification({}, {}, {}, {})'.format(title , message , duration, icon))
 #----------------------------------------------------------------
 # TUTORIAL #
 def OK_Dialog(title,message):
