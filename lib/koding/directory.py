@@ -196,6 +196,8 @@ Add_Dir(name='TEST ITEM', url='', mode='test_item', folder=False, context_items=
 # Set the artwork
     liz.setArt(set_art)
 
+    liz.setIsFolder(folder)
+
 # Loop through the set_property list and set each item in there
     for item in list(set_property.items()):
         liz.setProperty(item[0], item[1])
