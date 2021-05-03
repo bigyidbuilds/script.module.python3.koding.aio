@@ -174,11 +174,11 @@ will even return the plugin path if it's been played through an external add-on.
 CODE: Last_Played()
 
 EXAMPLE CODE:
-if koding.Play_Video('http://totalrevolution.tv/videos/python_koding/Browse_To_Folder.mov'):
+if koding.Play_Video('https://ia802509.us.archive.org/6/items/CC_1914_02_02_MakingALiving/CC_1914_02_02_MakingALiving_512kb.mp4'):
     xbmc.sleep(3000)
     xbmc.Player().stop()
     last_vid = Last_Played()
-    dialog.ok('VIDEO LINK','The link we just played is:\n\n%s'%last_vid)
+    dialog.ok('VIDEO LINK','The link we just played is:\n\n{}'.format(last_vid))
 else:
     dialog.ok('PLAYBACK FAILED','Sorry this video is no longer available, please try using a different video link.')
 ~"""
@@ -189,7 +189,7 @@ else:
     sql     = "SELECT files.strFilename as mystring, path.strPath as mybase FROM files JOIN path ON files.idPath=path.idPath ORDER BY files.lastPlayed DESC LIMIT 1"
     results = DB_Query(db_path, sql)
     try:
-        if Decode_String(results[0]['mybase']).startswith('plugin://'):
+        if Decode_String(results[0]['mybase']).startswith(b'plugin://'):
             return Decode_String(results[0]['mystring'])
         else:
             return Decode_String(results[0]['mybase']+results[0]['mystring'])
@@ -263,7 +263,7 @@ AVAILABLE PARAMS:
     first instance so if you want the 3rd table on the page you would set to 2.
 
 EXAMPLE CODE:
-vid_test = Link_Tester(video='http://totalrevolution.tv/videos/python_koding/Browse_To_Folder.mov')
+vid_test = Link_Tester(video='https://ia802509.us.archive.org/6/items/CC_1914_02_02_MakingALiving/CC_1914_02_02_MakingALiving_512kb.mp4')
 if vid_test['status'] == 'bad_link':
     dialog.ok('BAD LINK','The link you sent through cannot even be played on this device let alone another one!')
 elif vid_test['status'] == 'proxy_fail':
@@ -302,10 +302,10 @@ else:
 
         xbmc.Player().stop()
         video_orig = Last_Played()
-        xbmc.log('VIDEO: %s'%video_orig,2)
-        if video_orig.startswith('plugin://'):
+        xbmc.log('VIDEO: {}'.format(video_orig),2)
+        if isinstance(video_orig,str) and video_orig.startswith(b'plugin://'):
             video = xbmclink
-            xbmc.log('NEW VIDEO: %s'%video,2)
+            xbmc.log('NEW VIDEO: {}'.format(video),2)
         else:
             video = video_orig
         r = requests.head(url=video, timeout=5)
@@ -324,14 +324,14 @@ else:
         for item in proxies:
             myproxies.append({'http':'http://%s:%s'%(item['ip'],item['port']),'https':'https://%s:%s'%(item['ip'],item['port'])})
         success = False
-        if video_orig.startswith('plugin://'):
-            dp.create('[COLOR gold]CHECKING PROXIES[/COLOR]','This video is being parsed through another add-on so using the plugin path should work. Now checking the final resolved link...','')
+        if video_orig.startswith(b'plugin://'):
+            dp.create('[COLOR gold]CHECKING PROXIES[/COLOR]','This video is being parsed through another add-on so using the plugin path should work. Now checking the final resolved link...')
         else:
-            dp.create('[COLOR gold]CHECKING PROXIES[/COLOR]','Please wait...','')
+            dp.create('[COLOR gold]CHECKING PROXIES[/COLOR]','Please wait...')
 
         counter = 1
         while (not success) and (len(myproxies) > 0):
-            dp.update(counter/len(myproxies),'Checking proxy %s'%counter)
+            dp.update(int(counter/len(myproxies)),'Checking proxy {}'.format(counter))
             counter += 1
             proxychoice  = random.choice( list(range(0,len(myproxies))) )
             currentproxy = myproxies[proxychoice]
@@ -365,7 +365,7 @@ else:
                 dp.close()
                 break
         plugin_path = None
-        if video_orig.startswith('plugin://'):
+        if video_orig.startswith(b'plugin://'):
             plugin_path = video_orig
         if len(myproxies)==0 and not success:
             return {"plugin_path":plugin_path, "url":video, "status":"proxy_fail"}
@@ -399,7 +399,7 @@ AVAILABLE PARAMS:
     selection window, by default it's set to "Stream Selection"
 
 EXAMPLE CODE:
-dialog.ok('M3U SELECTOR','We will now call this function using the following url:','','[COLOR dodgerblue]http://totalrevolution.tv/videos/playlists/youtube.m3u[/COLOR]')
+dialog.ok('M3U SELECTOR','We will now call this function using the following url:\n''\n[COLOR dodgerblue]http://totalrevolution.tv/videos/playlists/youtube.m3u[/COLOR]')
 
 # This example uses YouTube plugin paths but any playable paths will work
 vid = koding.M3U_Selector(url='http://totalrevolution.tv/videos/playlists/youtube.m3u')
