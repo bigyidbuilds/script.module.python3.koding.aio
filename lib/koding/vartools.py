@@ -438,17 +438,17 @@ AVAILABLE PARAMS:
 
 EXAMPLE CODE:
 mylist = ['plugin.test-1.0.zip','plugin.test-0.7.zip','plugin.test-1.1.zip','plugin.test-0.9.zip']
-dialog.ok('OUR LIST OF FILES', '[COLOR=dodgerblue]%s[/COLOR]\n[COLOR=powderblue]%s[/COLOR]\n[COLOR=dodgerblue]%s[/COLOR]\n[COLOR=powderblue]%s[/COLOR]'%(mylist[0],mylist[1],mylist[2],mylist[3]))
+dialog.ok('OUR LIST OF FILES', '[COLOR=dodgerblue]{}[/COLOR]\n[COLOR=powderblue]{}[/COLOR]\n[COLOR=dodgerblue]{}[/COLOR]\n[COLOR=powderblue]{}[/COLOR]'.format(mylist[0],mylist[1],mylist[2],mylist[3]))
 
 highest = Highest_Version(content=mylist,start_point='-',end_point='.zip')
-dialog.ok('HIGHEST VERSION', 'The highest version number of your files is:','[COLOR=dodgerblue]%s[/COLOR]'%highest)
+dialog.ok('HIGHEST VERSION', 'The highest version number of your files is:\n[COLOR=dodgerblue]{}[/COLOR]'.format(highest))
 ~"""
     highest      = 0
     highest_ver  = ''
     for item in content:
         version = item.replace(end_point,'')
         version = version.split(start_point)
-        version = version[len(version)-1]
+        version = float(version[len(version)-1])
         if version > highest:
             highest      = version
             highest_ver  = item
@@ -470,7 +470,7 @@ AVAILABLE PARAMS:
 
 EXAMPLE CODE:
 my_password = koding.ID_Generator(20)
-dialog.ok('ID GENERATOR','Password generated:', '', '[COLOR=dodgerblue]%s[/COLOR]' % my_password)
+dialog.ok('ID GENERATOR','Password generated:\n\n[COLOR=dodgerblue]%s[/COLOR]' % my_password)
 ~"""
     import string
     import random
@@ -524,18 +524,18 @@ AVAILABLE PARAMS:
     through a string rather than a path set this to True.
 
 EXAMPLE CODE:
-home = koding.Physical_Path('special://home')
+home = koding.Physical_Path('special://database')
 home_md5 = koding.md5_check(home)
-dialog.ok('md5 Check', 'The md5 of your home folder is:', '[COLOR=dodgerblue]%s[/COLOR]'%home_md5)
+dialog.ok('md5 Check', 'The md5 of your home folder is:\n[COLOR=dodgerblue]{}[/COLOR]'.format(home_md5))
 
 guisettings = xbmcvfs.translatePath('special://profile/guisettings.xml')
 guisettings_md5 = koding.md5_check(guisettings)
-dialog.ok('md5 Check', 'The md5 of your guisettings.xml:', '[COLOR=dodgerblue]%s[/COLOR]'%guisettings_md5)
+dialog.ok('md5 Check', 'The md5 of your guisettings.xml:\n[COLOR=dodgerblue]{}[/COLOR]'.format(guisettings_md5))
 
-mystring = 'This is just a random text string we\'ll get the md5 value of'
+mystring = 'This is just a random text string we\'ll get the md5 value of'.encode('utf-8')
 myvalue = koding.md5_check(src=mystring,string=True)
-dialog.ok('md5 String Check', 'String to get md5 value of:', '[COLOR=dodgerblue]%s[/COLOR]'%mystring)
-dialog.ok('md5 String Check', 'The md5 value of your string:', '[COLOR=dodgerblue]%s[/COLOR]'%myvalue)
+dialog.ok('md5 String Check', 'String to get md5 value of:\n[COLOR=dodgerblue]{}[/COLOR]'.format(mystring))
+dialog.ok('md5 String Check', 'The md5 value of your string:\n[COLOR=dodgerblue]{}[/COLOR]'.format(myvalue))
 ~"""
     import hashlib
     import os
@@ -553,7 +553,7 @@ dialog.ok('md5 String Check', 'The md5 value of your string:', '[COLOR=dodgerblu
 
 # If source is a directory
     else:
-        try:
+        # try:
             for root, dirs, files in os.walk(src):
               for names in files:
                 filepath = os.path.join(root,names)
@@ -563,16 +563,18 @@ dialog.ok('md5 String Check', 'The md5 value of your string:', '[COLOR=dodgerblu
                   f1.close()
                   continue
 
-            while 1:
+                while 1:
 # Read file in as little chunks
-              buf = f1.read(4096)
-              if not buf : break
-              SHAhash.update(hashlib.md5(buf).hexdigest())
+                    buf = f1.read(4096)
+                    if not buf : break
+                    try:
+                        SHAhash.update(hashlib.md5(buf.decode('cp1252')).hexdigest())
+                    except:pass
             f1.close()
-        except:
-            return -2
+        # except:
+        #     return -2
 
-        return SHAhash.hexdigest()
+            return SHAhash.hexdigest()
 #----------------------------------------------------------------
 # TUTORIAL #
 def Merge_Dicts(*dict_args):
