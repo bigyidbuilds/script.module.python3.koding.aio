@@ -462,21 +462,21 @@ AVAILABLE PARAMS:
 
 EXAMPLE CODE:
 mytext = koding.Keyboard(heading='Type in the text you want returned',default='test text')
-dialog.ok('TEXT RETURNED','You typed in:', '', '[COLOR=dodgerblue]%s[/COLOR]'%mytext)
+dialog.ok('TEXT RETURNED','You typed in:\n\n[COLOR=dodgerblue]{}[/COLOR]'.format(mytext))
 dialog.ok('AUTOCLOSE ENABLED','This following example we\'ve set the autoclose to 3000. That\'s milliseconds which converts to 3 seconds.')
 mytext = koding.Keyboard(heading='Type in the text you want returned',default='this will close in 3s',autoclose=3000)
-dialog.ok('TEXT RETURNED','You typed in:', '', '[COLOR=dodgerblue]%s[/COLOR]'%mytext)
+dialog.ok('TEXT RETURNED','You typed in:\n\n[COLOR=dodgerblue]{}[/COLOR]'.format(mytext))
 mytext = koding.Keyboard(heading='Enter a number',kb_type='numeric')
-dialog.ok('NUMBER RETURNED','You typed in:', '', '[COLOR=dodgerblue]%s[/COLOR]'%mytext)
+dialog.ok('NUMBER RETURNED','You typed in:\n\n[COLOR=dodgerblue]{}[/COLOR]'.format(mytext))
 dialog.ok('RETURN FALSE ENABLED','All of the following examples have "return_false" enabled. This means if you escape out of the keyboard the return will be False.')
 mytext = koding.Keyboard(heading='Enter a date',return_false=True,kb_type='date')
-dialog.ok('DATE RETURNED','You typed in:', '', '[COLOR=dodgerblue]%s[/COLOR]'%mytext)
+dialog.ok('DATE RETURNED','You typed in:\n\n[COLOR=dodgerblue]{}[/COLOR]'.format(mytext))
 mytext = koding.Keyboard(heading='Enter a time',return_false=True,kb_type='time')
-dialog.ok('TIME RETURNED','You typed in:', '', '[COLOR=dodgerblue]%s[/COLOR]'%mytext)
+dialog.ok('TIME RETURNED','You typed in:\n\n[COLOR=dodgerblue]{}[/COLOR]'.format(mytext))
 mytext = koding.Keyboard(heading='IP Address',return_false=True,kb_type='ipaddress',autoclose=5)
-dialog.ok('IP RETURNED','You typed in:', '', '[COLOR=dodgerblue]%s[/COLOR]'%mytext)
+dialog.ok('IP RETURNED','You typed in:\n\n[COLOR=dodgerblue]{}[/COLOR]'.format(mytext))
 mytext = koding.Keyboard(heading='Password',kb_type='password')
-dialog.ok('MD5 RETURN','The md5 for this password is:', '', '[COLOR=dodgerblue]%s[/COLOR]'%mytext)
+dialog.ok('MD5 RETURN','The md5 for this password is:\n\n[COLOR=dodgerblue]{}[/COLOR]'.format(mytext))
 ~"""
     from .vartools import Decode_String
     kb_type = eval( 'xbmcgui.INPUT_%s'%kb_type.upper() )
