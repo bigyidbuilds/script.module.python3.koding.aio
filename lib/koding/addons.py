@@ -701,7 +701,7 @@ AVAILABLE PARAMS:
 EXAMPLE CODE:
 dialog.ok('ABOUT','This function allows us to pass through a folder name found in the addons folder and it will return the real id. The vast majority of add-ons use the same folder name as id but there are exceptions. Let\'s check Python Koding...')
 my_id = koding.Get_Addon_ID(folder='script.module.python3.koding.aio')
-dialog.ok('PYTHON KODING ID','The add-on id found for this folder folder is:','[COLOR=dodgerblue]%s[/COLOR]'%my_id)
+dialog.ok('PYTHON KODING ID','The add-on id found for this folder folder is:\n\n[COLOR=dodgerblue]{}[/COLOR]'.format(my_id))
 ~"""
     from .filetools import Text_File
     import re
