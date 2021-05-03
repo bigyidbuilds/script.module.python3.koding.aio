@@ -255,8 +255,8 @@ AVAILABLE PARAMS:
     If you would prefer the old log set this to 'old'
 
     formatting  -  By default you'll just get a default log but you can set
-    this to 'warnings', 'notices', 'errors' to filter by only those error types.
-    Notices will return in blue, warnings in gold and errors in red.
+    this to 'warnings', 'info', 'errors' to filter by only those error types.
+    info will return in blue, warnings in gold and errors in red.
     You can use as many of the formatting values as you want, just separate by an
     underscore such as 'warnings_errors'. If using anything other than the
     default in here your log will returned in order of newest log activity first
@@ -313,12 +313,12 @@ koding.Text_Box('OLD LOG FILE',old_log)
             log_array = reversed(log_array)
 
         for line in log_array:
-            if ('warnings' in formatting or 'clean' in formatting) and 'WARNING:' in line:
-                logtext_final += line.replace('WARNING:', '[COLOR=gold]WARNING:[/COLOR]')+'\n'
-            if ('errors' in formatting or 'clean' in formatting) and 'ERROR:' in line:
-                logtext_final += line.replace('ERROR:', '[COLOR=red]ERROR:[/COLOR]')+'\n'
-            if ('notices' in formatting or 'clean' in formatting) and 'NOTICE:' in line:
-                logtext_final += line.replace('NOTICE:', '[COLOR=dodgerblue]NOTICE:[/COLOR]')+'\n'
+            if ('warnings' in formatting or 'clean' in formatting) and 'WARNING' in line:
+                logtext_final += line.replace('WARNING', '[COLOR=gold]WARNING[/COLOR]')+'\n'
+            if ('errors' in formatting or 'clean' in formatting) and 'ERROR' in line:
+                logtext_final += line.replace('ERROR', '[COLOR=red]ERROR[/COLOR]')+'\n'
+            if ('info' in formatting or 'clean' in formatting) and 'INFO' in line:
+                logtext_final += line.replace('INFO', '[COLOR=dodgerblue]INFO[/COLOR]')+'\n'
 
         logtext = logtext_final
 
