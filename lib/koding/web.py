@@ -161,9 +161,9 @@ AVAILABLE PARAMS:
     (*) url  -  This is the url you want to grab the extension from
 
 EXAMPLE CODE:
-dialog.ok('ONLINE FILE','We will now try and get the extension of the file found at this URL:','','[COLOR=dodgerblue]http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_1mb.mp4[/COLOR]')
+dialog.ok('ONLINE FILE','We will now try and get the extension of the file found at this URL:\n\n[COLOR=dodgerblue]http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_1mb.mp4[/COLOR]')
 url_extension = koding.Get_Extension('http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_1mb.mp4')
-dialog.ok('FILE EXTENSION','The file extension of this Big Buck Bunny sample is:','','[COLOR=dodgerblue]%s[/COLOR]'%url_extension)
+dialog.ok('FILE EXTENSION','The file extension of this Big Buck Bunny sample is:\n\n[COLOR=dodgerblue]%s[/COLOR]'%url_extension)
 ~"""
     
     import os
