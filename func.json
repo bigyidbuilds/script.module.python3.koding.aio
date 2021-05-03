@@ -188,67 +188,67 @@
         "working": false
     },
     "Get_Addon_ID": {
-        "notes": null,
-        "working": false
+        "notes": "mods to example code",
+        "working": true
     },
     "Get_All_From_Table": {
-        "notes": null,
-        "working": false
+        "notes": "No Mods required",
+        "working": true
     },
     "Get_Contents": {
-        "notes": null,
-        "working": false
+        "notes": "No Mods required",
+        "working": true
     },
     "Get_Extension": {
-        "notes": null,
-        "working": false
+        "notes": "mods to example code",
+        "working": true
     },
     "Get_From_Table": {
-        "notes": null,
-        "working": false
+        "notes": "No mods required",
+        "working": true
     },
     "Get_ID": {
-        "notes": null,
+        "notes": "needs testing on android system",
         "working": false
     },
     "Grab_Log": {
-        "notes": null,
-        "working": false
+        "notes": "change to code as definitions for type of has changed and formatting is different,updated README to suit",
+        "working": true
     },
     "Highest_Version": {
-        "notes": null,
-        "working": false
+        "notes": "small mod to code",
+        "working": true
     },
     "ID_Generator": {
-        "notes": null,
-        "working": false
+        "notes": "mod to example code",
+        "working": true
     },
     "Installed_Addons": {
-        "notes": null,
-        "working": false
+        "notes": "no mods required",
+        "working": true
     },
     "Keyboard": {
-        "notes": null,
-        "working": false
+        "notes": "no mods required",
+        "working": true
     },
     "Last_Error": {
-        "notes": null,
-        "working": false
+        "notes": "no mods required",
+        "working": true
     },
     "Last_Played": {
-        "notes": null,
-        "working": false
+        "notes": "small changes to code startswith func now requires a bytes str b''",
+        "working": true
     },
     "Link_Tester": {
-        "notes": null,
-        "working": false
+        "notes": "small changes to code startswith func now requires a bytes str b''",
+        "working": true
     },
     "List_From_Dict": {
-        "notes": null,
-        "working": false
+        "notes": "no mods required",
+        "working": true
     },
     "M3U_Selector": {
-        "notes": null,
+        "notes": "this function needs a working m3u file to test as example no longer excists",
         "working": false
     },
     "Merge_Dicts": {
@@ -420,8 +420,8 @@
         "working": true
     },
     "md5_check": {
-        "notes": null,
-        "working": false
+        "notes": "Change to both code and example code to get md5 value of a file directory although to many try and execpts required to know if every value returned is the true md5 ",
+        "working": true
     },
     "route": {
         "notes": null,
