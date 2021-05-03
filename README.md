@@ -2236,41 +2236,43 @@ This function will also return the uid and gid in form of a dictionary.
 ###### GRAB LOG:
 This will grab the log file contents, works on all systems even forked kodi.
 
-	CODE:  Grab_Log([log_type, formatting, sort_order])
+CODE:  `Grab_Log([log_type, formatting, sort_order])`
 
-	AVAILABLE PARAMS:
-	    
-	    log_type    -  This is optional, if not set you will get the current log.
-	    If you would prefer the old log set this to 'old'
+AVAILABLE PARAMS:
+    
+log_type    -  This is optional, if not set you will get the current log.
+If you would prefer the old log set this to 'old'
 
-	    formatting  -  By default you'll just get a default log but you can set
-	    this to 'warnings', 'notices', 'errors' to filter by only those error types.
-	    Notices will return in blue, warnings in gold and errors in red.
-	    You can use as many of the formatting values as you want, just separate by an
-	    underscore such as 'warnings_errors'. If using anything other than the
-	    default in here your log will returned in order of newest log activity first
-	    (reversed order). You can also use 'clean' as an option and that will just
-	    return the full log but with clean text formatting and in reverse order.
+formatting  -  By default you'll just get a default log but you can set
+this to 'warnings', 'info', 'errors' to filter by only those error types.
+info will return in blue, warnings in gold and errors in red.
+You can use as many of the formatting values as you want, just separate by an
+underscore such as 'warnings_errors'. If using anything other than the
+default in here your log will returned in order of newest log activity first
+(reversed order). You can also use 'clean' as an option and that will just
+return the full log but with clean text formatting and in reverse order.
 
-	    sort_order   -  This will only work if you've sent through an argument other
-	    than 'original' for the formatting. By default the log will be shown in
-	    'reverse' order but you can set this to 'original' if you prefer ascending
-	    timestamp ordering like a normal log.
+sort_order   -  This will only work if you've sent through an argument other
+than 'original' for the formatting. By default the log will be shown in
+'reverse' order but you can set this to 'original' if you prefer ascending
+timestamp ordering like a normal log.
 
-	EXAMPLE CODE:
-	-------------
-	my_log = koding.Grab_Log()
-	dialog.ok('KODI LOG LOOP','Press OK to see various logging options, every 5 seconds it will show a new log style.')
-	koding.Text_Box('CURRENT LOG FILE (ORIGINAL)',my_log)
-	xbmc.sleep(5000)
-	my_log = koding.Grab_Log(formatting='clean', sort_order='reverse')
-	koding.Text_Box('CURRENT LOG FILE (clean in reverse order)',my_log)
-	xbmc.sleep(5000)
-	my_log = koding.Grab_Log(formatting='errors_warnings', sort_order='reverse')
-	koding.Text_Box('CURRENT LOG FILE (erros & warnings only - reversed)',my_log)
-	xbmc.sleep(5000)
-	old_log = koding.Grab_Log(log_type='old')
-	koding.Text_Box('OLD LOG FILE',old_log)
+EXAMPLE CODE:
+-------------
+```
+my_log = koding.Grab_Log()
+dialog.ok('KODI LOG LOOP','Press OK to see various logging options, every 5 seconds it will show a new log style.')
+koding.Text_Box('CURRENT LOG FILE (ORIGINAL)',my_log)
+xbmc.sleep(5000)
+my_log = koding.Grab_Log(formatting='clean', sort_order='reverse')
+koding.Text_Box('CURRENT LOG FILE (clean in reverse order)',my_log)
+xbmc.sleep(5000)
+my_log = koding.Grab_Log(formatting='errors_warnings', sort_order='reverse')
+koding.Text_Box('CURRENT LOG FILE (erros & warnings only - reversed)',my_log)
+xbmc.sleep(5000)
+old_log = koding.Grab_Log(log_type='old')
+koding.Text_Box('OLD LOG FILE',old_log)
+```
 
 ------------------------------------------------------------------------------------------
 
