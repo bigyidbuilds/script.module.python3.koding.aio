@@ -99,12 +99,12 @@ AVAILABLE PARAMS:
     not the url is a valid link and can be accessed via the system.
 
 EXAMPLE CODE:
-src = 'http://noobsandnerds.com/portal/Bits%20and%20bobs/Documents/user%20guide%20of%20the%20gyro%20remote.pdf'
-dst = 'special://home/remote.pdf'
+src = 'https://raw.githubusercontent.com/bigyidbuilds/script.module.python3.koding.aio/main/func.json'
+dst = 'special://home/func.json'
 dp = xbmcgui.DialogProgress()
 dp.create('Downloading File','Please Wait')
 koding.Download(src,dst,dp)
-dialog.ok('DOWNLOAD COMPLETE','Your download is complete, please check your home Kodi folder. There should be a new file called remote.pdf.')
+dialog.ok('DOWNLOAD COMPLETE','Your download is complete, please check your home Kodi folder. There should be a new file called func.json.')
 dialog.ok('DELETE FILE','Click OK to delete the downloaded file.')
 xbmcvfs.delete(dst)
 ~"""
