@@ -144,48 +144,48 @@
         "working": false
     },
     "Dependency_Check": {
-        "notes": null,
-        "working": false
+        "notes": "No mods required",
+        "working": true
     },
     "Download": {
-        "notes": null,
-        "working": false
+        "notes": "Mod to example code",
+        "working": true
     },
     "Dummy_File": {
-        "notes": "Add math.floor() to f.seek() function to convert file size to a int this will round down the value returned and better then straight convert to int as seek only will take int in py3, changed write() str to bytes ",
-        "working": false
+        "notes": "Add math.floor() to f.seek() function to convert file size to a int this will round down the value returned and better then straight convert to int as seek only will take int in py3, changed write() str to bytes , also mods to example",
+        "working": true
     },
     "End_Path": {
-        "notes": null,
-        "working": false
+        "notes": "No mods required",
+        "working": true
     },
     "Extract": {
-        "notes": null,
-        "working": false
+        "notes": "No mods required",
+        "working": true
     },
     "Find_In_Text": {
-        "notes": null,
-        "working": false
+        "notes": "Mod to example code",
+        "working": true
     },
     "Folder_Size": {
-        "notes": null,
-        "working": false
+        "notes": "No mods required",
+        "working": true
     },
     "Force_Close": {
-        "notes": null,
-        "working": false
+        "notes": "No mods required",
+        "working": true
     },
     "Free_Space": {
-        "notes": null,
-        "working": false
+        "notes": "No mods required",
+        "working": true
     },
     "Fresh_Install": {
-        "notes": null,
-        "working": false
+        "notes": "No mods required",
+        "working": true
     },
     "Fuzzy_Search": {
-        "notes": null,
-        "working": false
+        "notes": "No Mods Required",
+        "working": true
     },
     "Get_Addon_ID": {
         "notes": "mods to example code",
