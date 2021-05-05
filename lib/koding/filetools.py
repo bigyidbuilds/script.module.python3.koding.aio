@@ -497,7 +497,7 @@ AVAILABLE PARAMS:
 EXAMPLE CODE:
 dummy = 'special://home/test_dummy.txt'
 koding.Dummy_File(dst=dummy, size=100, size_format='b')
-dialog.ok('DUMMY FILE CREATED','Check your Kodi home folder and you should see a 100 byte test_dummy.txt file.','[COLOR=gold]Press OK to delete this file.[/COLOR]')
+dialog.ok('DUMMY FILE CREATED','Check your Kodi home folder and you should see a 100 byte test_dummy.txt file.\n[COLOR=gold]Press OK to delete this file.[/COLOR]')
 xbmcvfs.delete(dummy)
 ~"""
     import math
@@ -533,10 +533,10 @@ AVAILABLE PARAMS:
 EXAMPLE CODE:
 addons_path = 'special://home/addons'
 file_name = koding.End_Path(path=addons_path)
-dialog.ok('ADDONS FOLDER','Path checked:',addons_path,'Folder Name: [COLOR=dodgerblue]%s[/COLOR]'%file_name)
+dialog.ok('ADDONS FOLDER','Path checked:\n{}\nFolder Name: [COLOR=dodgerblue]{}[/COLOR]'.format(addons_path,file_name))
 file_path = 'special://home/addons/script.module.python3.koding.aio/addon.xml'
 file_name = koding.End_Path(path=file_path)
-dialog.ok('FILE NAME','Path checked:',file_path,'File Name: [COLOR=dodgerblue]%s[/COLOR]'%file_name)
+dialog.ok('FILE NAME','Path checked:\n{}\nFile Name: [COLOR=dodgerblue]{}[/COLOR]'.format(file_path,file_name))
 ~"""
     if '/' in path:
         path_array = path.split('/')
