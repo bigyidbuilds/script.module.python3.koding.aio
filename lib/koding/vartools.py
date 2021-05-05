@@ -335,9 +335,9 @@ AVAILABLE PARAMS:
 
 EXAMPLE CODE:
 textsearch = 'This is some text so lets have a look and see if we can find the words "lets have a look"'
-dialog.ok('ORIGINAL TEXT','Below is the text we\'re going to use for our search:','[COLOR dodgerblue]%s[/COLOR]'%textsearch)
+dialog.ok('ORIGINAL TEXT','Below is the text we\'re going to use for our search:\n[COLOR dodgerblue]{}[/COLOR]'.format(textsearch))
 search_result = koding.Find_In_Text(textsearch, 'text so ', ' and see')
-dialog.ok('SEARCH RESULT','You searched for the start string of "text so " and the end string of " and see".','','Your result is: [COLOR dodgerblue]%s[/COLOR]' % search_result[0])
+dialog.ok('SEARCH RESULT','You searched for the start string of "text so " and the end string of " and see".\n\nYour result is: [COLOR dodgerblue]{}[/COLOR]'.format(search_result[0]))
 
 # Please note: we know for a fact there is only one result which is why we're only accessing list item zero.
 # If we were expecting more than one return we would probably do something more useful and loop through in a for loop.
