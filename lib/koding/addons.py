@@ -1,4 +1,4 @@
-﻿#-*- coding: utf-8 -*-
+#-*- coding: utf-8 -*-
 
 # script.module.python3.koding.aio
 # Python Koding AIO (c) by TOTALREVOLUTION LTD (support@trmc.freshdesk.com)
@@ -78,10 +78,10 @@ if comedy_addons:
     from .web            import Open_URL
     
     download_new = True
-    local_path   = binascii.hexlify('genre_list')
+    local_path   = binascii.hexlify(b'genre_list')
     cookie_path  = "special://profile/addon_data/script.module.python3.koding.aio/cookies/"
     custom_genres= "special://profile/addon_data/script.module.python3.koding.aio/genres.txt"
-    final_path   = os.path.join(cookie_path,local_path)
+    final_path   = os.path.join(cookie_path,str(local_path))
     if not xbmcvfs.exists(cookie_path):
         xbmcvfs.mkdirs(cookie_path)
 
@@ -138,7 +138,7 @@ EXAMPLE CODE:
 dialog.ok('ADD-ON INFO','We will now try and pull name and version details for our current running add-on.')
 version = koding.Addon_Info(id='version')
 name = koding.Addon_Info(id='name')
-dialog.ok('NAME AND VERSION','[COLOR=dodgerblue]Add-on Name:[/COLOR] %s' % name,'[COLOR=dodgerblue]Version:[/COLOR] %s' % version)
+dialog.ok('NAME AND VERSION','[COLOR=dodgerblue]Add-on Name:[/COLOR] {}\n[COLOR=dodgerblue]Version:[/COLOR] {}'.format(name,version))
 ~"""
     import xbmcaddon
     if addon_id == '':
@@ -305,11 +305,11 @@ koding.Text_Box('[COLOR gold]SERVICE ADDONS[/COLOR]',my_text)
     return service_addons
 #----------------------------------------------------------------
 # TUTORIAL #
-def Addon_Setting(setting='',value='return_default',addon_id=''):
+def Addon_Setting(setting='',value='return_default',addon_id='',setting_type=''):
     """
 Change or retrieve an add-on setting.
 
-CODE: Addon_Setting(setting, [value, addon_id])
+CODE: Addon_Setting(setting, [value, addon_id, setting_type])
 
 AVAILABLE PARAMS:
             
@@ -322,12 +322,18 @@ AVAILABLE PARAMS:
 
     addon_id  -  By default this will use your current add-on id but you
     can access any add-on you want by entering an id in here.
+
+    setting_type  -  is used to set the type of setting if the value is to be change,
+    left as '' will use standard xbmc setSetting function
+    available types 'string','boolean','integer','number' 
+    integer is a int
+    number is a float
     
 EXAMPLE CODE:
 dialog.ok('ADDON SETTING','We will now try and pull the language settings for the YouTube add-on')
 if os.path.exists(xbmcvfs.translatePath('special://home/addons/plugin.video.youtube')):
     my_setting = koding.Addon_Setting(setting='youtube.language',addon_id='plugin.video.youtube')
-    dialog.ok('YOUTUBE SETTING','[COLOR=dodgerblue]Setting name:[/COLOR] youtube.language','[COLOR=dodgerblue]Value:[/COLOR] %s' % my_setting)
+    dialog.ok('YOUTUBE SETTING','[COLOR=dodgerblue]Setting name:[/COLOR] youtube.language\n[COLOR=dodgerblue]Value:[/COLOR] {}'.format(my_setting))
 else:
     dialog.ok('YOUTUBE NOT INSTALLED','Sorry we cannot run this example as you don\'t have YouTube installed.')
 ~"""
@@ -339,7 +345,16 @@ else:
         mysetting = ADDON.getSetting(setting)
         return mysetting
     else:
-        ADDON.setSetting(id=setting, value=value)
+        if setting_type == 'string':
+            ADDON.setSettingString(setting, value)
+        elif setting_type == 'number':
+            ADDON.setSettingNumber(setting,value)
+        elif setting_type == 'integer':
+            ADDON.setSettingInt(setting,value)
+        elif setting_type == 'boolean':
+            ADDON.setSettingBool(setting,value)
+        else:
+            ADDON.setSetting(setting,value)
 #----------------------------------------------------------------
 # TUTORIAL #
 def Adult_Toggle(adult_list=[], disable=True, update_status=0):
@@ -430,8 +445,8 @@ my_addons = koding.Caller(my_return='addons')
 my_path = koding.Caller(my_return='path')
 my_paths = koding.Caller(my_return='paths')
 
-dialog.ok('ADD-ON ID', 'Addon id you called this function from:','[COLOR=dodgerblue]%s[/COLOR]' % my_addon)
-dialog.ok('SCRIPT PATH', 'Script which called this function:','[COLOR=dodgerblue]%s[/COLOR]' % my_path)
+dialog.ok('ADD-ON ID', 'Addon id you called this function from:\n[COLOR=dodgerblue]{}[/COLOR]'.format(my_addon))
+dialog.ok('SCRIPT PATH', 'Script which called this function:\n[COLOR=dodgerblue]{}[/COLOR]'.format(my_path))
 
 addon_list = 'Below is a list of add-on id\'s which have been called to get to this final piece of code:\n\n'
 for item in my_addons:
@@ -491,20 +506,14 @@ def Check_Repo(repo,show_busy=True,timeout=10):
 This will check the status of repo and return True if the repo is online or False
 if it contains paths that are no longer accessible online.
 
-IMPORTANT: If you're running an old version of Kodi which uses the old Python 2.6
-(OSX and Android lower than Kodi 17 or a linux install with old Python installed on system)
-you will get a return of False on https links regardless of their real status. This is due
-to the fact Python 2.6 cannot access secure links. Any still using standard http links
-will return the correct results.
-
 CODE:  Check_Repo(repo, [show_busy, timeout])
 
 AVAILABLE PARAMS:
 
-    (*) repo  -  This is the name of the folder the repository resides in.
-    You can either use the full path or just the folder name which in 99.99%
+    (*) repo  -  This is the name/id of the repo or folder the repository resides in. In 99.99%
     of cases is the add-on id. If only using the folder name DOUBLE check first as
-    there are a handful which have used a different folder name to the actual add-on id!
+    there are a handful which have used a different folder name to the actual add-on id,
+    if the repo is not recognised it will search the addon folder
 
     show_busy - By default this is set to True and a busy dialog will show during the check
 
@@ -512,44 +521,55 @@ AVAILABLE PARAMS:
     to the repo url will take before timing out and returning False.
 
 EXAMPLE CODE:
-repo_status = Check_Repo('special://xbmc',show_busy=False,timeout=10)
+repo_status = Check_Repo('repository.koding.aio',show_busy=False,timeout=10)
 if repo_status:
-    dialog.ok('REPO STATUS','The repository modules4all is: [COLOR=lime]ONLINE[/COLOR]')
+    dialog.ok('REPO STATUS','The repository Koding AIO is: [COLOR=lime]ONLINE[/COLOR]')
 else:
-    dialog.ok('REPO STATUS','The repository modules4all is: [COLOR=red]OFFLINE[/COLOR]')
+    dialog.ok('REPO STATUS','The repository Koding AIO is: [COLOR=red]OFFLINE[/COLOR]')
 ~"""
-    import re
-
+    import xml.etree.ElementTree as ET
     from .__init__  import dolog
-    from .filetools import Text_File
+    from .filetools import Physical_Path
     from .guitools  import Show_Busy
     from .web       import Validate_Link
-    xbmc.log('### CHECKING %s'%repo,2)
-    status = True
     if show_busy:
         Show_Busy()
-    if not ADDONS in repo and not XBMC_PATH in repo:
-        repo_path = os.path.join(ADDONS,repo)
+    pathList = list()
+    xbmc.log('### CHECKING %s'%repo,2)
+    status = True
+    if xbmc.getCondVisibility('System.HasAddon({})'.format(repo)):
+        if xbmc.getCondVisibility('System.AddonIsEnabled({})'.format(repo)):
+            pathList.append(Physical_Path(Addon_Info('path',repo)))
+        else:
+            pathList.append(os.path.join(Physical_Path(),'addons',repo))
     else:
-        repo_path = repo
-    repo_path = Physical_Path(repo_path)
-    xbmc.log(repo_path,2)
-    repo_path = os.path.join(repo_path,'addon.xml')
-    xbmc.log(repo_path,2)
-    if os.path.exists(repo_path):
-        content  = Text_File(repo_path,'r')
-        md5_urls = re.findall(r'<checksum>(.+?)</checksum>', content, re.DOTALL)
-        for item in md5_urls:
-            link_status = Validate_Link(item,timeout)
-            dolog(item)
-            dolog('STATUS: %s'%link_status)
-            if link_status < 200 or link_status >= 400:
-                status = False
-                break
-        if show_busy:
-            Show_Busy(False)
-        return status
+        for root, dirs, files in os.walk(Physical_Path()):
+            for _dir in dirs:
+                p=os.path.join(root,_dir)
+                if p.endswith(repo):
+                    pathList.append(p)
+    if len(pathList)>=1:
+        for repo_path in pathList:
+            path = os.path.join(repo_path,'addon.xml')
+            if xbmcvfs.exists(path):
+                root = ET.parse(path)
+                _addon = root.getroot()
+                for _extension in _addon:
+                    if _extension.get('point') == "xbmc.addon.repository":
+                        checksum = _extension.find('checksum').text
+                        if checksum:
+                            link_status = Validate_Link(checksum,timeout)
+                            dolog('STATUS: {}'.format(link_status))
+                            if link_status < 200 or link_status >= 400:
+                                status = False
+                                break
+                if show_busy:
+                    Show_Busy(False)
+                return status
+            else:
+                xbmc.log('### ADDON XML file not found {}'.format(repo),2)
     else:
+        xbmc.log('### UNABLE to locate repo {}'.format(repo),2)
         if show_busy:
             Show_Busy(False)
         return False
@@ -557,7 +577,7 @@ else:
 # TUTORIAL #
 def Default_Setting(setting='',addon_id='',reset=False):
     """
-This will return the DEFAULT value for a setting (as set in resources/settings.xml)
+This will return the DEFAULT value in a dictionary for a setting (as set in resources/settings.xml)
 and optionally reset the current value back to this default. If you pass through
 the setting as blank it will return a dictionary of all default settings.
 
@@ -576,38 +596,48 @@ AVAILABLE PARAMS:
 EXAMPLE CODE:
 youtube_path = xbmcvfs.translatePath('special://home/addons/plugin.video.youtube')
 if os.path.exists(youtube_path):
-    my_value = koding.Default_Setting(setting='youtube.region', addon_id='plugin.video.youtube', reset=False)
-    dialog.ok('YOUTUBE SETTING','Below is a default setting for plugin.video.youtube:','Setting: [COLOR=dodgerblue]youtube.region[/COLOR]','Value: [COLOR=dodgerblue]%s[/COLOR]' % my_value)
+    my_setting='youtube.region'
+    my_value = koding.Default_Setting(setting=my_setting, addon_id='plugin.video.youtube', reset=False)
+    dialog.ok('YOUTUBE SETTING','Below is a default setting for plugin.video.youtube:\nSetting: [COLOR=dodgerblue]{}[/COLOR]\nValue: [COLOR=dodgerblue]{}[/COLOR]'.format(my_setting,my_value))
 else:
     dialog.ok('YOUTUBE NOT INSTALLED','We cannot run this example as it uses the YouTube add-on which has not been found on your system.')
 ~"""
-    import re
-    from .filetools   import Text_File
-    from .vartools import Data_Type
+    import xml.etree.ElementTree as ET
 
     if addon_id == '':
         addon_id = Caller()
     values = {}
     addon_path = Addon_Info(id='path',addon_id=addon_id)
     settings_path = os.path.join(addon_path,'resources','settings.xml')
-    content = Text_File(settings_path,'r').splitlines()
-    for line in content:
-        if 'id="' in line and 'default="' in line:
-            idx = re.compile('id="(.*?)"').findall(line)
-            idx = idx[0] if (len(idx) > 0) else ''
-            value = re.compile('default="(.*?)"').findall(line)
-            value = value[0] if (len(value) > 0) else ''
-            if setting != '' and idx == setting:
-                values = value
-                break
-            elif idx != '' and value != '' and setting == '':
-                values[idx] = value
-    if reset:
-        if Data_Type(values) == 'dict':
-            for item in list(values.items()):
-                Addon_Setting(addon_id=addon_id,setting=item[0],value=item[1])
-        elif setting != '':
-            Addon_Setting(addon_id=addon_id,setting=setting,value=value)
+    if xbmcvfs.exists(settings_path):
+        tree = ET.parse(settings_path)
+        _settings = tree.getroot()
+        for _section in _settings:
+            for _category in _section:
+                for _group in _category:
+                    for _setting in _group:
+                        _settingtype = _setting.get('type')
+                        if _settingtype != "action":
+                            _default = _setting.find('default').text
+                            _settingid = _setting.get('id')
+                            if setting != '' and _settingid == setting:    
+                                values.update({_settingid:{'default':_default,'settingtype':_settingtype}})
+                                if not _default:
+                                    xbmc.log('{} SETTING HAS NO DEFAULT'.format(setting),2)
+                                break
+                            elif setting == '':
+                                if _default:
+                                    values.update({_settingid:{'default':_default,'settingtype':_settingtype}})
+        if reset:
+            for k,v in values.items():
+                settingtype = v.get('settingtype')
+                default     = v.get('default')
+                if settingtype == 'boolean':
+                    if default == 'true':
+                        default = True 
+                    elif default == 'false':
+                        default = False
+                Addon_Setting(addon_id=addon_id,setting=k,value=default,settingtype=settingtype)
     return values
 #----------------------------------------------------------------
 # TUTORIAL #
