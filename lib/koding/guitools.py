@@ -121,12 +121,12 @@ AVAILABLE PARAMS:
     '[COLOR=gold]Sorry, this process cannot be cancelled[/COLOR]'
 
 EXAMPLE CODE:
-dialog.ok('COUNTDOWN EXAMPLE', 'Press OK to bring up a countdown timer', '', 'Try cancelling the process.')
+dialog.ok('COUNTDOWN EXAMPLE', 'Press OK to bring up a countdown timer\n\nTry cancelling the process.')
 my_return = koding.Countdown(title='COUNTDOWN EXAMPLE', message='Quick simple countdown message (cancel enabled).', update_msg='%s seconds remaining', wait_time=5)
 if my_return:
     dialog.ok('SUCCESS!','Congratulations you actually waited through the countdown timer without cancelling!')
 else:
-    dialog.ok('BORED MUCH?','What happened, did you get bored waiting?', '', '[COLOR=dodgerblue]Let\'s set off another countdown you CANNOT cancel...[/COLOR]')
+    dialog.ok('BORED MUCH?','What happened, did you get bored waiting?\n\n[COLOR=dodgerblue]Let\'s set off another countdown you CANNOT cancel...[/COLOR]')
     koding.Countdown(title='COUNTDOWN EXAMPLE', message='Quick simple countdown message (cancel disabled).', update_msg='%s seconds remaining', wait_time=5, allow_cancel=False, cancel_msg='[COLOR=gold]Sorry, this process cannot be cancelled[/COLOR]')
 ~"""
     dp        = xbmcgui.DialogProgress()
@@ -153,7 +153,7 @@ else:
             percent = increment * current
         
         remaining_display = update_msg % remaining
-        dp.update(percent, message, remaining_display)
+        dp.update(int(percent), '{}\n{}'.format(message, remaining_display))
 
         current += 1
 
@@ -247,12 +247,12 @@ EXAMPLE CODE:
 main_text = 'This is my main text.\n\nYou can add anything you want in here and the slider will allow you to see all the contents.\n\nThis example shows using a blue background colour and a transparency of 90%.\n\nWe have also changed the highlighted_color to yellow.'
 my_buttons = ['button 1', 'button 2', 'button 3']
 my_choice = koding.Custom_Dialog(main_content=main_text,pos='center',buttons=my_buttons,background='213749',transparency=90,highlight_color='yellow')
-dialog.ok('CUSTOM DIALOG 1','You selected option %s'%my_choice,'The value of this is: [COLOR=dodgerblue]%s[/COLOR]'%my_buttons[my_choice])
+dialog.ok('CUSTOM DIALOG 1','You selected option {}\nThe value of this is: [COLOR=dodgerblue]{}[/COLOR]'.format(my_choice,my_buttons[my_choice]))
 
 main_text = 'This is example 2 with no fancy colours, just a fullscreen and a working scrollbar.\n\nYou\'ll notice there are also a few more buttons on this one.\n\nline 1\nline 2\nline 3\nline 4\nline 5\nline 6\nline 7\nline 8\nline 9\nline 10\nline 11\nline 12\nline 13\nline 14\nline 15\nline 16\nline 17\nline 18\nline 19\nline 20\n\nYou get the idea we\'ll stop there!'
 my_buttons = ['button 1', 'button 2', 'button 3','button 4', 'button 5', 'button 6','button 7', 'button 8', 'button 9','button 10', 'button 11', 'button 12', 'button 13','button 14', 'button 15', 'button 16','button 17', 'button 18', 'button 19','button 20']
 my_choice = koding.Custom_Dialog(main_content=main_text,pos='center',size='fullscreen',buttons=my_buttons)
-dialog.ok('CUSTOM DIALOG 2','You selected option %s'%my_choice,'The value of this is: [COLOR=dodgerblue]%s[/COLOR]'%my_buttons[my_choice])
+dialog.ok('CUSTOM DIALOG 2','You selected option {}\nThe value of this is: [COLOR=dodgerblue]{}[/COLOR]'.format(my_choice,my_buttons[my_choice]))
 ~"""
     skin_path   = os.path.join(koding_path,"resources","skins","Default","720p")
     ACTION      = -1
