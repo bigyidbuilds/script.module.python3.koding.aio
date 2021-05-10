@@ -186,29 +186,35 @@ which are run as services then trying to enable them can cause Kodi to freeze.
 ###### ADDON SETTINGS - RETRIEVE/SET VALUE:
 Change or retrieve an add-on setting.
 
-	CODE: Addon_Setting(setting, [value, addon_id])
+CODE: `Addon_Setting(setting, [value, addon_id, setting_type])`
 
-	AVAILABLE PARAMS:
-	            
-	    (*) setting  -  This is the name of the setting you want to access, by
-	    default this function will return the value but if you add the
-	    value param shown below it will CHANGE the setting.
+AVAILABLE PARAMS:
+            
+(\*) setting  -  This is the name of the setting you want to access, by
+default this function will return the value but if you add the
+value param shown below it will CHANGE the setting.
 
-	    value  -  If set this will change the setting above to whatever value
-	    is in here.
+value  -  If set this will change the setting above to whatever value
+is in here.
 
-	    addon_id  -  By default this will use your current add-on id but you
-	    can access any add-on you want by entering an id in here.
-	    
-	EXAMPLE CODE:
-	-------------
-	dialog.ok('ADDON SETTING','We will now try and pull the language settings for the YouTube add-on')
-	if os.path.exists(xbmc.translatePath('special://home/addons/plugin.video.youtube')):
-	    my_setting = koding.Addon_Setting(setting='youtube.language',addon_id='plugin.video.youtube')
-	    dialog.ok('YOUTUBE SETTING','[COLOR=dodgerblue]Setting name:[/COLOR] youtube.language','[COLOR=dodgerblue]Value:[/COLOR] %s' % my_setting)
-	else:
-	    dialog.ok('YOUTUBE NOT INSTALLED','Sorry we cannot run this example as you don\'t have YouTube installed.')
+addon_id  -  By default this will use your current add-on id but you
+can access any add-on you want by entering an id in here.
 
+setting_type  -  is used to set the type of setting if the value is to be change,
+left as '' will use standard xbmc setSetting function
+available types 'string','boolean','integer','number' 
+integer is a int
+number is a float
+    
+EXAMPLE CODE:
+```
+dialog.ok('ADDON SETTING','We will now try and pull the language settings for the YouTube add-on')
+if os.path.exists(xbmcvfs.translatePath('special://home/addons/plugin.video.youtube')):
+    my_setting = koding.Addon_Setting(setting='youtube.language',addon_id='plugin.video.youtube')
+    dialog.ok('YOUTUBE SETTING','[COLOR=dodgerblue]Setting name:[/COLOR] youtube.language','[COLOR=dodgerblue]Value:[/COLOR] %s' % my_setting)
+else:
+    dialog.ok('YOUTUBE NOT INSTALLED','Sorry we cannot run this example as you don\'t have YouTube installed.')
+```
 ------------------------------------------------------------------------------------------
 
 ###### ADDON SETTINGS - OPEN:
@@ -364,62 +370,57 @@ you can grab a list of paths that have been called.
 This will check the status of repo and return True if the repo is online or False
 if it contains paths that are no longer accessible online.
 
-IMPORTANT: If you're running an old version of Kodi which uses the old Python 2.6
-(OSX and Android lower than Kodi 17 or a linux install with old Python installed on system)
-you will get a return of False on https links regardless of their real status. This is due
-to the fact Python 2.6 cannot access secure links. Any still using standard http links
-will return the correct results.
+CODE:  `Check_Repo(repo, [show_busy, timeout])`
 
-	CODE:  Check_Repo(repo, [show_busy, timeout])
+AVAILABLE PARAMS:
 
-	AVAILABLE PARAMS:
+(\*) repo  -  This is the name/id of the repo or folder the repository resides in. In 99.99%
+of cases is the add-on id. If only using the folder name DOUBLE check first as
+there are a handful which have used a different folder name to the actual add-on id,
+if the repo is not recognised it will search the addon folder
 
-	    (*) repo  -  This is the name of the folder the repository resides in.
-	    You can either use the full path or just the folder name which in 99.99%
-	    of cases is the add-on id. If only using the folder name DOUBLE check first as
-	    there are a handful which have used a different folder name to the actual add-on id!
+show_busy - By default this is set to True and a busy dialog will show during the check
 
-	    show_busy - By default this is set to True and a busy dialog will show during the check
+timeout - By default this is set to 10 (seconds) - this is the maximum each request
+to the repo url will take before timing out and returning False.
 
-	    timeout - By default this is set to 10 (seconds) - this is the maximum each request
-	    to the repo url will take before timing out and returning False.
-
-	EXAMPLE CODE:
-	-------------
-	repo_status = Check_Repo('special://xbmc',show_busy=False,timeout=10)
-	if repo_status:
-	    dialog.ok('REPO STATUS','The repository modules4all is: [COLOR=lime]ONLINE[/COLOR]')
-	else:
-	    dialog.ok('REPO STATUS','The repository modules4all is: [COLOR=red]OFFLINE[/COLOR]')
-
+EXAMPLE CODE:
+```
+repo_status = Check_Repo('repository.koding.aio',show_busy=False,timeout=10)
+if repo_status:
+    dialog.ok('REPO STATUS','The repository Koding AIO is: [COLOR=lime]ONLINE[/COLOR]')
+else:
+    dialog.ok('REPO STATUS','The repository Koding AIO is: [COLOR=red]OFFLINE[/COLOR]')
+```
 ------------------------------------------------------------------------------------------
 
 ###### DEFAULT SETTING:
-This will return the DEFAULT value for a setting (as set in resources/settings.xml)
+This will return the DEFAULT value in a dictionary for a setting (as set in resources/settings.xml)
 and optionally reset the current value back to this default. If you pass through
 the setting as blank it will return a dictionary of all default settings.
 
-	CODE:  Default_Setting(setting, [addon_id, reset])
+CODE:  `Default_Setting(setting, [addon_id, reset])`
 
-	AVAILABLE PARAMS:
+AVAILABLE PARAMS:
 
-	    setting  -  The setting you want to retreive the value for.
-	    Leave blank to return a dictionary of all settings
+setting  -  The setting you want to retreive the value for.
+Leave blank to return a dictionary of all settings
 
-	    addon_id  -  This is optional, if not set it will use the current id.
+addon_id  -  This is optional, if not set it will use the current id.
 
-	    reset  -  By default this is set to False but if set to true and it will
-	    reset the current value to the default.
+reset  -  By default this is set to False but if set to true and it will
+reset the current value to the default.
 
-	EXAMPLE CODE:
-	-------------
-	youtube_path = xbmc.translatePath('special://home/addons/plugin.video.youtube')
-	if os.path.exists(youtube_path):
-	    my_value = koding.Default_Setting(setting='youtube.region', addon_id='plugin.video.youtube', reset=False)
-	    dialog.ok('YOUTUBE SETTING','Below is a default setting for plugin.video.youtube:','Setting: [COLOR=dodgerblue]youtube.region[/COLOR]','Value: [COLOR=dodgerblue]%s[/COLOR]' % my_value)
-	else:
-	    dialog.ok('YOUTUBE NOT INSTALLED','We cannot run this example as it uses the YouTube add-on which has not been found on your system.')
-
+EXAMPLE CODE:
+```
+youtube_path = xbmcvfs.translatePath('special://home/addons/plugin.video.youtube')
+if os.path.exists(youtube_path):
+    my_setting='youtube.region'
+    my_value = koding.Default_Setting(setting=my_setting, addon_id='plugin.video.youtube', reset=False)
+    dialog.ok('YOUTUBE SETTING','Below is a default setting for plugin.video.youtube:\nSetting: [COLOR=dodgerblue]{}[/COLOR]\nValue: [COLOR=dodgerblue]{}[/COLOR]'.format(my_setting,my_value))
+else:
+    dialog.ok('YOUTUBE NOT INSTALLED','We cannot run this example as it uses the YouTube add-on which has not been found on your system.')
+```
 ------------------------------------------------------------------------------------------
 
 ###### DELETE COOKIES:
