@@ -249,7 +249,7 @@ AVAILABLE PARAMS:
 EXAMPLE CODE:
 my_path = xbmcvfs.translatePath('special://home/test/testing/readme.txt')
 koding.Create_Paths(path=my_path)
-dialog.ok('PATH CREATED','Check in your Kodi home folder and you should now have sub-folders of /test/testing/.','[COLOR=gold]Press ok to remove these folders.[/COLOR]')
+dialog.ok('PATH CREATED','Check in your Kodi home folder and you should now have sub-folders of /test/testing/.\n[COLOR=gold]Press ok to remove these folders.[/COLOR]')
 shutil.rmtree(xbmcvfs.translatePath('special://home/test'))
 ~"""
     home_path = Physical_Path('special://home')
@@ -285,7 +285,7 @@ AVAILABLE VALUES:
 
 EXAMPLE CODE:
 dbpath = koding.DB_Path_Check(db_path='addons')
-dialog.ok('ADDONS DB','The path to the current addons database is:',dbpath)
+dialog.ok('ADDONS DB','The path to the current addons database is:\n{}'.format(dbpath))
 ~"""
     finalfile = 0
     dirs,databasepath = xbmcvfs.listdir(DATABASE)
@@ -320,16 +320,18 @@ ftmc_path = os.path.join(log_path,'ftmc_crashlog*.*')
 
 deleted_files = koding.Delete_Crashlogs(extra_paths=[tvmc_path, ftmc_path])
 if deleted_files > 0:
-    dialog.ok('CRASHLOGS DELETED','Congratulations, a total of %s crashlogs have been deleted.')
+    dialog.ok('CRASHLOGS DELETED','Congratulations, a total of {} crashlogs have been deleted.'.format(deleted_files))
 else:
     dialog.ok('NO CRASHLOGS','No crashlogs could be found on the system.')
 ~"""
     import glob
-    log_path =  'special://logpath/'
+    log_path  =  xbmcvfs.translatePath('special://logpath/')
     xbmc_path = (os.path.join(log_path, 'xbmc_crashlog*.*'))
     kodi_path = (os.path.join(log_path, 'kodi_crashlog*.*'))
     spmc_path = (os.path.join(log_path, 'spmc_crashlog*.*'))
     paths = [xbmc_path, kodi_path, spmc_path]
+    if len(extra_paths) > 0:
+        paths = paths+extra_paths
     total = 0
     for items in paths:
         for file in glob.glob(items):
@@ -367,7 +369,8 @@ test1 = os.path.join(delete_path,'test1.txt')
 test2 = os.path.join(delete_path,'test2.txt')
 koding.Text_File(test1,'w','testing1')
 koding.Text_File(test2,'w','testing2')
-dialog.ok('DELETE FILES','All *.txt files will be deleted from:', '', '/userdata/addon_data/test/')
+dialog.ok('TEST FILES CREATED','If you look in your userdata/addon_data/test folder you should now see 2 files. The folder name is \'test\'.')
+dialog.ok('DELETE FILES','All *.txt files will be deleted from:\n\n/userdata/addon_data/test/')
 koding.Delete_Files(filepath=delete_path, filetype='.txt', subdirectories=True)
 ~"""
     filepath = Physical_Path(filepath)
@@ -433,7 +436,7 @@ koding.Dummy_File(dst=file2, size=10, size_format='kb')
 koding.Dummy_File(dst=file3, size=10, size_format='kb')
 
 dialog.ok('TEST FILE CREATED','If you look in your userdata folder you should now see a new test folder containing 3 dummy files. The folder name is \'py_koding_test\'.')
-if dialog.yesno('[COLOR gold]DELETE FOLDER[/COLOR]','Everything except file1.txt will now be removed from:', '/userdata/py_koding_test/','Do you want to continue?'):
+if dialog.yesno('[COLOR gold]DELETE FOLDER[/COLOR]','Everything except file1.txt will now be removed from:\n/userdata/py_koding_test/\nDo you want to continue?'):
     koding.Delete_Folders(filepath=delete_path, ignore=[file1])
     dialog.ok('DELETE LEFTOVERS','When you press OK we will delete the whole temporary folder we created including it\'s contents')
     koding.Delete_Folders(filepath=delete_path)
@@ -770,8 +773,8 @@ AVAILABLE PARAMS:
     will not be recreated and you risk corruption.
 
 EXAMPLE CODE:
-if dialog.yesno('[COLOR gold]TOTAL WIPEOUT![/COLOR]','This will attempt give you a totally fresh install of Kodi.','Are you sure you want to continue?'):
-    if dialog.yesno('[COLOR gold]FINAL CHANCE!!![/COLOR]','If you click Yes this WILL attempt to wipe your install', '[COLOR=dodgerblue]ARE YOU 100% CERTAIN YOU WANT TO WIPE?[/COLOR]'):
+if dialog.yesno('[COLOR gold]TOTAL WIPEOUT![/COLOR]','This will attempt give you a totally fresh install of Kodi.\nAre you sure you want to continue?'):
+    if dialog.yesno('[COLOR gold]FINAL CHANCE!!![/COLOR]','If you click Yes this WILL attempt to wipe your install\n[COLOR=dodgerblue]ARE YOU 100% CERTAIN YOU WANT TO WIPE?[/COLOR]'):
         clean_state = koding.Fresh_Install()
 ~"""
 # If it's LE/OE and there are no files to ignore we do a hard reset
