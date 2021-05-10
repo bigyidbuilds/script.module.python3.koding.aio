@@ -1,147 +1,147 @@
 {
     "ASCII_Check": {
-        "notes": null,
-        "working": false
+        "notes": "small Changes to both example and main code",
+        "working": true
     },
     "Add_Dir": {
-        "notes": null,
-        "working": false
+        "notes": "mods required to for setArt() as method used no longer working in K19",
+        "working": true
     },
     "Add_Multiple_To_Table": {
-        "notes": null,
-        "working": false
+        "notes": "No mods required",
+        "working": true
     },
     "Add_To_Table": {
-        "notes": null,
-        "working": false
+        "notes": "No mods required",
+        "working": true
     },
     "Addon_Genre": {
-        "notes": null,
+        "notes": "Func possibly should be removed ",
         "working": false
     },
     "Addon_Info": {
-        "notes": null,
-        "working": false
+        "notes": "Mod to example code",
+        "working": true
     },
     "Addon_List": {
-        "notes": null,
-        "working": false
+        "notes": "No mods required",
+        "working": true
     },
     "Addon_Service": {
-        "notes": null,
-        "working": false
+        "notes": "No mods required",
+        "working": true
     },
     "Addon_Setting": {
-        "notes": null,
-        "working": false
+        "notes": "Added variable for new setting types when attempting to change a setting, README updated",
+        "working": true
     },
     "Adult_Toggle": {
-        "notes": null,
+        "notes": "No built in example",
         "working": false
     },
     "App_Settings": {
-        "notes": null,
+        "notes": "requires checking on android os",
         "working": false
     },
     "Browse_To_File": {
-        "notes": null,
-        "working": false
+        "notes": "No mods required",
+        "working": true
     },
     "Browse_To_Folder": {
-        "notes": null,
-        "working": false
+        "notes": "No mods required",
+        "working": true
     },
     "Caller": {
-        "notes": null,
-        "working": false
+        "notes": "Mod to example code",
+        "working": true
     },
     "Check_Playback": {
-        "notes": null,
-        "working": false
+        "notes": "Mod to example code",
+        "working": true
     },
     "Check_Repo": {
-        "notes": null,
-        "working": false
+        "notes": "code re-wrote due to py3 and xbmc changes for 19",
+        "working": true
     },
     "Cleanup_String": {
-        "notes": null,
-        "working": false
+        "notes": "Changes to code due to how py3 deals with strings",
+        "working": true
     },
     "Cleanup_Textures": {
-        "notes": null,
-        "working": false
+        "notes": "Changes to code due to change in sqlite3",
+        "working": true
     },
     "Cleanup_URL": {
-        "notes": null,
-        "working": false
+        "notes": "Mod to example code",
+        "working": true
     },
     "Colour_Text": {
-        "notes": null,
-        "working": false
+        "notes": "No mods required",
+        "working": true
     },
     "Compress": {
-        "notes": null,
-        "working": false
+        "notes": "No mods required",
+        "working": true
     },
     "Convert_Special": {
-        "notes": null,
-        "working": false
+        "notes": "No mods required",
+        "working": true
     },
     "Countdown": {
-        "notes": null,
-        "working": false
+        "notes": "changes to code for how dialog progress gui works in K19",
+        "working": true
     },
     "Create_Paths": {
-        "notes": null,
-        "working": false
+        "notes": "No mods required",
+        "working": true
     },
     "Create_Table": {
-        "notes": null,
-        "working": false
+        "notes": "No mods required",
+        "working": true
     },
     "Current_Profile": {
-        "notes": null,
-        "working": false
+        "notes": "Mod to example code",
+        "working": true
     },
     "Custom_Dialog": {
-        "notes": null,
-        "working": false
+        "notes": "Works but propose its updated",
+        "working": true
     },
     "DB_Path_Check": {
-        "notes": null,
-        "working": false
+        "notes": "Mod to example code",
+        "working": true
     },
     "DB_Query": {
-        "notes": null,
-        "working": false
+        "notes": "No mods required",
+        "working": true
     },
     "Data_Type": {
-        "notes": null,
-        "working": false
+        "notes": "No mods required",
+        "working": true
     },
     "Decode_String": {
-        "notes": null,
-        "working": false
+        "notes": "No mods required",
+        "working": true
     },
     "Default_Setting": {
-        "notes": null,
-        "working": false
+        "notes": "Re did code completely due to format of addon settings.xml changing,return is now a dict containing the setting id, with default value and setting type, README updated",
+        "working": true
     },
     "Delete_Cookies": {
-        "notes": null,
-        "working": false
+        "notes": "No mods required",
+        "working": true
     },
     "Delete_Crashlogs": {
-        "notes": null,
-        "working": false
+        "notes": "Mod to example code",
+        "working": true
     },
     "Delete_Files": {
-        "notes": null,
-        "working": false
+        "notes": "Mod to example code",
+        "working": true
     },
     "Delete_Folders": {
-        "notes": null,
-        "working": false
+        "notes": "Mod to example code",
+        "working": true
     },
     "Dependency_Check": {
         "notes": "No mods required",
