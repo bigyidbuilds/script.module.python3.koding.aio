@@ -1,10 +1,9 @@
-WHAT IS KODING.PY?
-=================
+# WHAT IS KODING.PY?
+
 This is a universal module which has an variety of functions to make life much easier for developers whilst giving them the opportunity to keep their code secure.
 
 
-IMPORTING KODING.PY
-===================
+# IMPORTING KODING.PY
 
 addon.xml - just import as you would any other module, the following code would work:
     
@@ -12,8 +11,8 @@ addon.xml - just import as you would any other module, the following code would 
 
 default.py (or whatever your initial opening py document is called) - all you need is to import koding.
 
-INCLUDE IN YOUR REPO
-====================
+# INCLUDE IN YOUR REPO
+
 ```
 <dir>
 	<info compressed="false">https://raw.githubusercontent.com/bigyidbuilds/xbmc/main/packages/koding/addons.xml</info>
