@@ -220,6 +220,7 @@ koding.Remove_Table('test_table')
         sql_string += "%s(%s), " % (key, constraints[key])
     sql_string = sql_string[:-2]
     sql_string += ");"
+    xbmc.log(sql_string,2)
     _execute_db_string(sql_string)
 #----------------------------------------------------------------
 # TUTORIAL #
@@ -242,7 +243,7 @@ upon. If you need to access a built-in kodi database (as shown in example below)
 the JSON-RPC commands where possible. 
 
 EXAMPLE CODE:
-import filetools
+from . import filetools
 dbpath = filetools.DB_Path_Check('addons')
 db_table = 'addon'
 kodi_version = int(float(xbmc.getInfoLabel("System.BuildVersion")[:2]))
