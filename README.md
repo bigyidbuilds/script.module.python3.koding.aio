@@ -2269,7 +2269,6 @@ than 'original' for the formatting. By default the log will be shown in
 timestamp ordering like a normal log.
 
 EXAMPLE CODE:
--------------
 ```
 my_log = koding.Grab_Log()
 dialog.ok('KODI LOG LOOP','Press OK to see various logging options, every 5 seconds it will show a new log style.')
