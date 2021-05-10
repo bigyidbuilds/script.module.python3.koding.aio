@@ -50,7 +50,7 @@ my_return = ASCII_Check(sourcefile=home, dp=progress)
 if len(my_return) > 0:
     dialog.select('NON ASCII FILES', my_return)
 else:
-    dialog.ok('ASCII CHECK CLEAN','Congratulations!','There weren\'t any non-ASCII files found on this system.')
+    dialog.ok('ASCII CHECK CLEAN','Congratulations!\nThere weren\'t any non-ASCII files found on this system.')
 ~"""
     rootlen      = len(sourcefile)
     for_progress = []
@@ -70,7 +70,7 @@ else:
             for_progress.append(file) 
             progress = len(for_progress) / float(N_ITEM) * 100
             if dp:
-                dp.update(0,"Checking for non ASCII files",'[COLOR yellow]%s[/COLOR]'%d, 'Please Wait')
+                dp.update(int(progress),"Checking for non ASCII files\n[COLOR yellow]{}[/COLOR]\nPlease Wait".format(file))
             
             try:
                 file.encode('ascii')
@@ -78,6 +78,8 @@ else:
             except UnicodeDecodeError:
                 badfile = (str(base)+'/'+str(file)).replace('\\','/').replace(':/',':\\')
                 final_array.append(badfile)
+    if dp:
+        dp.close()
     return final_array
 #----------------------------------------------------------------
 # TUTORIAL #
@@ -100,10 +102,10 @@ dialog.ok('CLEAN STRING', '[COLOR dodgerblue]%s[/COLOR]'%clean_text)
     import urllib.request, urllib.parse, urllib.error
     bad_chars = ['/','\\',':',';','"',"'"]
 
-    try:
-        my_string = my_string.encode('utf8')
-    except:
-        pass
+    # try:
+    #     my_string = my_string.encode('utf8')
+    # except:
+    #     pass
     
     my_string = urllib.parse.unquote_plus(my_string)
     my_string = my_string.replace('<br>','').replace('<br />','').replace('<br/>','')
