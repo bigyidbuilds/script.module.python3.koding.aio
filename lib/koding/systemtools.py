@@ -80,8 +80,9 @@ koding.Cleanup_Textures(frequency=5)
         c.execute("DELETE FROM sizes   WHERE idtexture = ?", (id,))
         c.execute("DELETE FROM texture WHERE id        = ?", (id,))
 
-    c.execute("VACUUM")
+    
     conn.commit()
+    c.execute("VACUUM")
     c.close()
 
     xbmc.log("### Automatic Cache Removal: %d Old Textures removed" % len(images))
@@ -93,7 +94,7 @@ koding.Cleanup_Textures(frequency=5)
         try:
             xbmcvfs.delete(path)
         except:
-            xbmc.log(Last_Error())
+            xbmc.log(Last_Error(),2)
 #----------------------------------------------------------------
 # TUTORIAL #
 def Current_Profile():
@@ -106,7 +107,7 @@ CODE:  Current_Profile()
 
 EXAMPLE CODE:
 profile = koding.Current_Profile()
-dialog.ok('CURRENT PROFILE','Your current running profile is:','[COLOR=dodgerblue]%s[/COLOR]' % profile)
+dialog.ok('CURRENT PROFILE','Your current running profile is:\n[COLOR=dodgerblue]{}[/COLOR]'.format(profile))
 ~"""
 
     return xbmc.getInfoLabel('System.ProfileName')
