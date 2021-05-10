@@ -36,7 +36,7 @@ AVAILABLE PARAMS:
 EXAMPLE CODE:
 raw_url = '" http://test.com/video/"/'
 clean_url = koding.Cleanup_URL(raw_url)
-dialog.ok('CLEANUP URL', 'Orig: %s'%raw_url,'Clean: %s'%clean_url)
+dialog.ok('CLEANUP URL', 'Orig: {}\nClean: {}'.format(raw_url,clean_url))
 ~"""
     from html.parser import HTMLParser
 
