@@ -54,7 +54,7 @@ AVAILABLE PARAMS:
     for this is 10s.
 
 EXAMPLE CODE:
-xbmc.Player().play('http://totalrevolution.tv/videos/python_koding/Browse_To_Folder.mov')
+xbmc.Player().play('https://ia802509.us.archive.org/6/items/CC_1914_02_02_MakingALiving/CC_1914_02_02_MakingALiving_512kb.mp4')
 isplaying = koding.Check_Playback()
 if isplaying:
     dialog.ok('PLAYBACK SUCCESSFUL','Congratulations, playback was successful')
