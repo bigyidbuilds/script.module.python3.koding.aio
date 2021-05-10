@@ -12,6 +12,16 @@ addon.xml - just import as you would any other module, the following code would 
 
 default.py (or whatever your initial opening py document is called) - all you need is to import koding.
 
+INCLUDE IN YOUR REPO
+====================
+```
+<dir>
+	<info compressed="false">https://raw.githubusercontent.com/bigyidbuilds/xbmc/main/packages/koding/addons.xml</info>
+	<checksum>https://raw.githubusercontent.com/bigyidbuilds/xbmc/main/packages/koding/addons.xml.md5</checksum>
+	<datadir zip="true">https://raw.githubusercontent.com/bigyidbuilds/xbmc/main/packages/koding/</datadir>
+</dir>
+```
+
 ------------------------------------------------------------------------------------------
 
 ## A D D O N   B A S E D   F U N C T I O N S
